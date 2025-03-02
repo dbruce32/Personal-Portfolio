@@ -107,7 +107,9 @@
             margin: auto;
             transition: transform 0.3s ease-in-out; /* To return from hover */
         }
-
+        .yellow-jacket-picture {
+            width: 20px;
+        }
         .profile-picture:hover {
             transform: scale(1.1);
             transition: transform 0.4s ease-in-out;
@@ -121,12 +123,13 @@
             margin-left: 10px;
             padding: 10px;
             background: #333;
+            text-align: center;
             color: white;
             width: auto;
             border-radius: 10px;
         }
 
-        /* Animation */
+        /* Animations upon site load */
 
         @keyframes slideIn {
             from {
@@ -156,9 +159,17 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .container h1 { animation-delay: 0.5s; }
-        .container p { animation-delay: 1s; }
-        .section { animation-delay: 1.5s; }
+        .container h1 {
+            animation-delay: 0.5s;
+        }
+        .container p {
+            animation-delay: 1s;
+        }
+        .section {
+            animation-delay: 1.5s;
+        }
+        /* --------------------------- */
+        
 
         /* Make "Dylan Bruce" wiggle
         @keyframes wiggle {
@@ -173,10 +184,35 @@
             animation: wiggle 2s ease-out forwards
         }
         ------------ */
+        
+        /* Flickering Background */
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 180deg at 50% 70%, hsla(0,0%,98%,1) 0deg, #eec32d 72deg, #ec4b4b 144deg, #709ab9 216deg, #4dffbf 288deg, hsla(0,0%,98%,1) 1turn);
+            mask:
+                radial-gradient(circle at 50% 50%, white 2px, transparent 2.5px) 50% 50% / 20px 20px,
+                url("https://assets.codepen.io/605876/noise-mask.png") 256px 50% / 256px 256px;
+            mask-composite: intersect;
+            animation: flicker 20s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes flicker {
+            to {
+                mask-position: 50% 50%, 0 50%;
+            }
+        }        
 
     </style>
 </head>
 <body>
+    <div class="background"></div>
+
     <div class="sidebar">
         <h1>Navigation</h1>
         <button onclick="location.href='index.html'">About</button>
@@ -214,8 +250,9 @@
                 <p>LinkedIn: <a href="www.linkedin.com/in/dylan-bruce-261b101ba">Dylan Bruce</a></p>
             </div>
         </div>
-        <footer>
+        <footer class="thanks">
             Thank you for your time!
+            <img class="yellow-jacket-picture" src="images/yellow-jacket.svg" alt="Placeholder">
         </footer>
     </div>
 </body>
