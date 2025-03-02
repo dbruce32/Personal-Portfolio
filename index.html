@@ -5,18 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <style>
+        /* CSS Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            text-align: left;
+            display: flex;
+        }
+        .content header {
             text-align: center;
         }
-        header {
-            background: #333;
-            color: white;
+        .container h1 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+        }
+        .container p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .container ul li {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 5px solid #2e7d32;
+        }
+        .sidebar {
+            width: 200px;
+            background: linear-gradient(to right, #004d99, #008080);
             padding: 20px;
-            font-size: 24px;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        .sidebar h1 {
+            text-align: center;
+        }
+        .sidebar button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: white;
+            color: #2e7d32;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s ease-in-out;
+            border-radius: 10px;
+        }
+        .sidebar button:hover {
+            background: #a5d6a7;
+            transform: scale(1.1);
+        }
+        .sidebar button:hover {
+            background: #a5d6a7;
+            transform: scale(1.1);
+        }
+        .section li:hover {
+            transform: translateX(10px);
+        }
+        .content {
+            margin-left: 220px;
+            width: calc(100% - 220px);
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(to right, #004d99, #008080);
+            color: white;
+            padding: 40px;
+            font-size: 32px;
+            border-radius: 20px;
+            margin: 5px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .bio {
+            text-align: center;
         }
         .container {
             max-width: 800px;
@@ -26,52 +100,123 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        img {
+        .profile-picture {
             width: 150px;
-            border-radius: 50%;
+            border-radius: 45%;
+            display: block;
+            margin: auto;
+            transition: transform 0.3s ease-in-out; /* To return from hover */
         }
+
+        .profile-picture:hover {
+            transform: scale(1.1);
+            transition: transform 0.4s ease-in-out;
+        }
+
         .section {
             margin: 20px 0;
         }
         footer {
             margin-top: 20px;
+            margin-left: 10px;
             padding: 10px;
             background: #333;
             color: white;
+            width: auto;
+            border-radius: 10px;
         }
+
+        /* Animation */
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            } to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            } to {
+                opacity: 1
+            }
+        }
+
+        header {
+            opacity: 0;
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        
+        .container h1, .container p, .section {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .container h1 { animation-delay: 0.5s; }
+        .container p { animation-delay: 1s; }
+        .section { animation-delay: 1.5s; }
+
+        /* Make "Dylan Bruce" wiggle
+        @keyframes wiggle {
+            from {
+                transform: translateY(100px);
+            } to {
+                transform: translateY(0px);
+            }
+        }
+
+        .wiggle-text {
+            animation: wiggle 2s ease-out forwards
+        }
+        ------------ */
+
     </style>
 </head>
 <body>
-    <header>
-        Dylan Gregory Bruce
-    </header>
-    <div class="container">
-        <img src="profile.jpg" alt="Profile Picture">
-        <h1>Dylan Bruce</h1>
-        <p>Computer Science Student | Georgia Institute of Technology | U.S. Citizen</p>
-        
-        <div class="section">
-            <h2>About Me</h2>
-            <p>Hello! I'm a passionate developer with experience in web and software development.</p>
-        </div>
-        
-        <div class="section">
-            <h2>Projects</h2>
-            <ul>
-                <li>Project 1 - <a href="#">Travel App</a></li>
-                <li>Project 2 - <a href="#">Movie Success Prediction Model</a></li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>Contact</h2>
-            <p>Email: dylanbruce.cs@gmail.com</p>
-            <p>GitHub: <a href="#">https://github.com/dbruce32</a></p>
-            <p>LinkedIn: <a href="#">lwww.linkedin.com/in/dylan-bruce-261b101ba</a></p>
-        </div>
+    <div class="sidebar">
+        <h1>Navigation</h1>
+        <button onclick="location.href='index.html'">About</button>
     </div>
-    <footer>
-        &copy; 2025 Dylan Bruce. All rights reserved.
-    </footer>
+    <div class="content">
+        <header>
+            Dylan Gregory Bruce
+        </header>
+        <div class="container">
+            <h1 class="wiggle-text">Dylan Bruce</h1>
+            <p class="bio">Computer Science Student | Georgia Institute of Technology | U.S. Citizen</p>
+            
+            <div class="section" id="about">
+                <h2>About Me</h2>
+                <p>
+                    Hello! I am a computer science student at Georgia Institute of Technology with a focus in intelligence and
+                    information internetworks. I am currently seeking an internship position to leverage my skills in software,
+                    problem-solving, and teamwork to be able to contribute to innovative projects.
+                </p>
+                <img class="profile-picture" src="images/profile.jpeg" alt="Placeholder">
+            </div>
+            
+            <div class="section" id="projects">
+                <h2>Projects</h2>
+                <ul>
+                    <li>Travel Planning App - <a href="#">TBD</a></li>
+                    <li>Movie Success Prediction Model - In Progress</li>
+                </ul>
+            </div>
+            
+            <div class="section" id="contact">
+                <h2>Contact</h2>
+                <p>Email: <a href="mailto:dylanbruce.cs@gmail.com">dylanbruce.cs@gmail.com</a></p>
+                <p>GitHub: <a href="https://github.com/dbruce32">dbruce32</a></p>
+                <p>LinkedIn: <a href="www.linkedin.com/in/dylan-bruce-261b101ba">Dylan Bruce</a></p>
+            </div>
+        </div>
+        <footer>
+            Thank you for your time!
+        </footer>
+    </div>
 </body>
 </html>
