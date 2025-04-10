@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dylan Bruce - Professional Timeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --dark: #14213d;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: var(--dark);
+            line-height: 1.7;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .nav-item:hover {
+            color: var(--white);
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+        }
+        
+        .timeline-content {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.1);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timeline-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px var(--primary-light);
+            color: var(--primary);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0;
+                padding-left: 70px;
+                text-align: left;
+            }
+            
+            .timeline-icon {
+                left: 31px;
+            }
+            
+            body {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.25rem;
+            }
+            
+            .nav-item {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dylan Bruce - Timeline</h1>
+        <p class="tagline">Undergraduate CS student at Georgia Tech</p>
+        
+        <div class="nav-container">
+            <a href="./index.html" class="nav-item">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="./professional.html" class="nav-item active">
+                <i class="fas fa-user-tie"></i> Professional
+            </a>
+            <a href="./skills.html" class="nav-item">
+                <i class="fas fa-code"></i> Skills
+            </a>
+            <a href="./projects.html" class="nav-item">
+                <i class="fas fa-project-diagram"></i> Projects
+            </a>
+            <a href="./contact.html" class="nav-item">
+                <i class="fas fa-paper-plane"></i> Contact
+            </a>
+        </div>
+    </header>
+    
+    <div class="timeline">
+        <!-- MTA Cert -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">2022</span>
+                <h3 class="timeline-title">Microsoft Technology Associate (MTA)</h3>
+                <p class="timeline-subtitle">Microsoft</p>
+                <p class="timeline-description">
+                    Blah blah MTA blah blah
+                </p>
+            </div>
+        </div>
+
+        <!-- Arditi -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-pizza-slice"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">09/2022 - 04/2023</span>
+                <h3 class="timeline-title">Local Server</h3>
+                <p class="timeline-subtitle">Arditi Pizzeria</p>
+                <p class="timeline-description">
+                    blah blah yum pizza blah blah
+                </p>
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023 - Present</span>
+                <h3 class="timeline-title">B.S. Computer Science</h3>
+                <p class="timeline-subtitle">Georgia Institute of Technology</p>
+                <p class="timeline-description">
+                    GT blah blah GT
+                </p>
+            </div>
+        </div>
+        
+        <!-- (Hopefully) Summer TA 
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">Summer 2025</span>
+                <h3 class="timeline-title">Discrete/Linear Teaching Assistant</h3>
+                <p class="timeline-subtitle"> College of Computing / Department of Mathematics </p>
+                <p class="timeline-description">
+                    blah blah teaching blah blah
+                </p>
+            </div>
+        </div> -->
+    </div>
+
+    <script>
+        // Highlight current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const linkPage = item.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
