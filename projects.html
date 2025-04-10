@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DYLAN BRUCE - Projects</title>
+    <link rel="icon" type="image/png" href="./images/db-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --dark: #14213d;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: var(--dark);
+            line-height: 1.7;
+            background: var(--bg-gradient);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Navigation Bar */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .nav-item:hover {
+            color: var(--white);
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Projects Grid */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.1);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary-dark);
+        }
+        
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+        
+        .skills-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-dark);
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-item {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>My Projects</h1>
+    <p class="subtitle">A collection of my recent work and contributions</p>
+    
+    <!-- Navigation Bar -->
+    <div class="nav-container">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="professional.html" class="nav-item">
+            <i class="fas fa-briefcase"></i> Professional
+        </a>
+        <a href="skills.html" class="nav-item">
+            <i class="fas fa-code"></i> Skills
+        </a>
+        <a href="projects.html" class="nav-item active">
+            <i class="fas fa-project-diagram"></i> Projects
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-paper-plane"></i> Contact
+        </a>
+    </div>
+    
+    <!-- Projects Grid -->
+    <div class="projects-container">
+        <!-- Movie Prediction Model -->
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                 alt="Movie Revenue Prediction Model" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Movie Revenue Prediction Model</h3>
+                <p class="project-description">
+                    A full-featured online store with product management, cart functionality, 
+                    and secure payment processing built with modern web technologies.
+                </p>
+                <div class="skills-used">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Scikit-Learn</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                 alt="Task Management App" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Travel App: WanderSync</h3>
+                <p class="project-description">
+                    A travel application for users to plan trips for themselves or with others.
+                </p>
+                <div class="skills-used">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Android Studio</span>
+                    <span class="skill-tag">XML</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
