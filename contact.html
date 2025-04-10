@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dylan Bruce - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --dark: #14213d;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: var(--dark);
+            line-height: 1.7;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .nav-item:hover {
+            color: var(--white);
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .contact-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .contact-link {
+            display: inline-block;
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            word-break: break-all;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--dark);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-link.linkedin:hover {
+            background: #0a66c2;
+        }
+        
+        .social-link.github:hover {
+            background: #333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.25rem;
+            }
+            
+            .nav-item {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hire me!!</h1>
+        <p class="tagline">Please reach out! I'd love to hear from you.</p>
+        
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="professional.html" class="nav-item">
+                <i class="fas fa-user-tie"></i> Professional
+            </a>
+            <a href="skills.html" class="nav-item">
+                <i class="fas fa-code"></i> Skills
+            </a>
+            <a href="projects.html" class="nav-item">
+                <i class="fas fa-project-diagram"></i> Projects
+            </a>
+            <a href="contact.html" class="nav-item active">
+                <i class="fas fa-paper-plane"></i> Contact
+            </a>
+        </div>
+    </header>
+    
+    <div class="contact-container">
+        <!-- Email Card -->
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <h3 class="contact-title">Email Me</h3>
+            <a href="mailto:dylanbruce.cs@gmail.com">
+                dylanbruce.cs@gmail.com
+            </a>
+        </div>
+        
+        <!-- LinkedIn Card -->
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <h3 class="contact-title">LinkedIn</h3>
+            <a href="www.linkedin.com/in/dylan-bruce-261b101ba" target="_blank">
+                www.linkedin.com/in/dylan-bruce-261b101ba
+            </a>
+        </div>
+        
+        <!-- GitHub Card -->
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fab fa-github"></i>
+            </div>
+            <h3 class="contact-title">GitHub</h3>
+            <a href="https://github.com/dbruce32" target="_blank">
+                https://github.com/dbruce32
+            </a>
+        </div>
+        
+        <!-- Social Links
+        <div class="social-links">
+            <a href="www.linkedin.com/in/dylan-bruce-261b101ba" class="social-link linkedin" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/dbruce32" class="social-link github" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div> -->
+    </div>
+
+    <script>
+        // Highlight current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const linkPage = item.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
