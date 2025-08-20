@@ -27,7 +27,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
             color: var(--dark);
@@ -100,128 +100,249 @@
             background: var(--primary);
             color: white;
         }
-        
-        /* About Me Section */
-        .about-section {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            margin-bottom: 3rem;
-            transition: all 0.3s ease;
-            flex: 1;
-        }
-        
-        .about-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.1);
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            position: relative;
-            padding-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
-        }
-        
-        .about-content {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-light);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        /* Scroll Animation Classes */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .left-margin-ul {
-            margin-left: 20px;
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
         }
         
-        /* Education Section */
-        .education-section {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            margin-bottom: 3rem;
-            transition: all 0.3s ease;
-            flex: 1;
+        /* Modern Sections Container */
+        .modern-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
-        
-        .education-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.1);
+
+        /* Modern About Section */
+        .modern-about {
+            background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .education-item {
+
+        .modern-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .modern-about-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
         }
-        
+
+        .about-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .about-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .download-cv {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-cv:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .about-content {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Modern Education Section */
+        .modern-education {
+            background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modern-education::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+        }
+
+        .education-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(67, 97, 238, 0.02);
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(5px);
+            background: rgba(67, 97, 238, 0.04);
+        }
+
         .education-item:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
         }
-        
-        .education-title {
-            font-size: 1.25rem;
+
+        .education-item-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
             color: var(--primary-dark);
+            margin-bottom: 0.25rem;
         }
-        
-        .education-subtitle {
+
+        .education-item-subtitle {
             font-size: 1rem;
-            color: var(--gray);
-            margin-bottom: 0.5rem;
+            color: var(--primary);
             font-weight: 500;
+            margin-bottom: 0.5rem;
         }
-        
+
         .education-date {
             display: inline-block;
-            background: var(--primary-light);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
             margin-bottom: 0.75rem;
         }
-        
+
         .education-description {
             color: var(--gray);
             font-size: 0.95rem;
             line-height: 1.6;
+        }
+
+        .education-description ul {
+            margin-left: 1.5rem;
+        }
+
+        .education-description li {
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            margin-top: 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
         
         /* Timeline */
@@ -230,8 +351,6 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem 0;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.4s forwards;
         }
         
         .timeline::before {
@@ -263,53 +382,65 @@
         
         .timeline-content {
             background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
         }
         
         .timeline-content:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(67, 97, 238, 0.15);
         }
         
         .timeline-date {
             display: inline-block;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
         
         .timeline-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--primary-dark);
         }
         
         .timeline-subtitle {
             font-size: 1rem;
-            color: var(--gray);
+            color: var(--primary);
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 600;
         }
         
         .timeline-description {
             color: var(--gray);
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         .timeline-icon {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: var(--white);
             border-radius: 50%;
             display: flex;
@@ -317,14 +448,42 @@
             justify-content: center;
             box-shadow: 0 0 0 4px var(--primary-light);
             color: var(--primary);
-            top: 0;
+            font-size: 1.2rem;
+            top: 2rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-icon {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 0 4px var(--primary);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            .modern-sections {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .modern-about, .modern-education {
+                padding: 2rem;
+            }
+
+            .about-title, .education-title {
+                font-size: 1.5rem;
+            }
+
             .timeline::before {
                 left: 31px;
             }
@@ -339,38 +498,15 @@
             .timeline-icon {
                 left: 31px;
             }
-            
-            body {
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 2.25rem;
+
+            .section-header h2 {
+                font-size: 2rem;
             }
             
             .nav-item {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
             }
-            
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Sections Container */
-        .sections-container {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.2s forwards;
         }
         
         /* Interactive Background */
@@ -392,32 +528,6 @@
             border-radius: 50%;
             opacity: 0.2;
             transition: transform 0.1s ease-out;
-        }
-
-        .download-cv {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .download-cv:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-        }
-
-        .download-cv i {
-            font-size: 1rem;
         }
     </style>
 </head>
@@ -447,161 +557,150 @@
             </a>
         </div>
     </header>
-    
-    <div class="sections-container">
+
+    <!-- Modern About & Education Sections -->
+    <div class="modern-sections scroll-reveal">
         <!-- About Me Section -->
-        <section class="about-section">
-            <div class="section-title">
-                <h2>About Me</h2>
+        <section class="modern-about">
+            <div class="modern-about-header">
+                <div class="about-title">
+                    <div class="about-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    About Me
+                </div>
                 <a href="./documents/dylan_bruce_resume.pdf" class="download-cv" download>
                     <i class="fas fa-download"></i>
-                    Download CVs
+                    Download CV
                 </a>
             </div>
             <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a third year Computer Science major and mathematics minor
-                        at Georgia Tech with experience in software development
-                        cycles and a strong foundation in Python, Java, and SQL.
-                        I'm eager to secure an internship to apply my technical
-                        expertise and analytical problem-solving skills in an
-                        innovative setting. Above all, I'm driven to learn from
-                        my peers while furthering my career.
-                    </p>
-                </div>
-                
-                <!-- <img src="./images/profile.jpg" alt="Dylan Bruce" class="about-image"> -->
+                I'm a third year Computer Science major and mathematics minor at Georgia Tech with experience in software development cycles and a strong foundation in Python, Java, and SQL. I'm eager to secure an internship to apply my technical expertise and analytical problem-solving skills in an innovative setting. Above all, I'm driven to learn from my peers while furthering my career.
             </div>
         </section>
-        
+
         <!-- Education Section -->
-        <section class="education-section">
-            <h2 class="section-title">Education</h2>
+        <section class="modern-education">
+            <div class="education-title">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                Education
+            </div>
+            
             <div class="education-item">
                 <span class="education-date">2023 - Present</span>
-                <h3 class="education-title">Bachelor of Science in Computer Science</h3>
-                <p class="education-subtitle">Georgia Institute of Technology</p>
-                <p class="education-description">
-                    <ul class="left-margin-ul">
-                        <li><b>Threads/Focuses:</b> Intelligence & Information Internetworks</li>
-                        <li><b>Relevant Coursework:</b>
-                            Machine Learning,
-                            Introduction to AI,
-                            Systems and Networks,
-                            Design and Analysis of Algorithms,
-                            Data Structures & Algorithms,
-                            Combinatorics,
-                            Probability and Statistics</li>
+                <h3 class="education-item-title">Bachelor of Science in Computer Science</h3>
+                <p class="education-item-subtitle">Georgia Institute of Technology</p>
+                <div class="education-description">
+                    <ul>
+                        <li><strong>Threads/Focuses:</strong> Intelligence & Information Internetworks</li>
+                        <li><strong>Relevant Coursework:</strong> Machine Learning, Introduction to AI, Systems and Networks, Design and Analysis of Algorithms, Data Structures & Algorithms, Combinatorics, Probability and Statistics</li>
                     </ul>
-                </p>
+                </div>
             </div>
+            
             <div class="education-item">
                 <span class="education-date">2019 - 2023</span>
-                <h3 class="education-title">High School Diploma</h3>
-                <p class="education-subtitle">Brookwood High School</p>
-                <p class="education-description">
-                    <ul class="left-margin-ul">
-                        <li><b>Accolades:</b>
-                            <ul class="left-margin-ul">
-                                <!--<li>Graduated Top 1% of class</li>-->
+                <h3 class="education-item-title">High School Diploma</h3>
+                <p class="education-item-subtitle">Brookwood High School</p>
+                <div class="education-description">
+                    <ul>
+                        <li><strong>Accolades:</strong>
+                            <ul>
                                 <li>Microsoft Technology Associate (MTA)</li>
                                 <li>AP Scholar with Distinction</li>
                             </ul>
                         </li>
                     </ul>
-                </p>
+                </div>
             </div>
         </section>
     </div>
 
-    <header><h1> Work Experience </h1></header>
-    
-    <div class="timeline">
-        
-        <!-- VIP -->
-        <div class="timeline-item">
-            <div class="timeline-icon">
-                <i class="fas fa-book"></i>
-            </div>
-            <div class="timeline-content">
-                <span class="timeline-date">August 2025 - Present</span>
-                <h3 class="timeline-title">Undergraduate Researcher</h3>
-                <p class="timeline-subtitle"> GT Vertical Integration Project </p>
-                <p class="timeline-description">
-                    - Conducting research in maritime robotics, focusing on sensing and perception of unstructured
-                    marine environments.
-                    <br>
-                    - Utilizing image processing and software development to support navigation,
-                    mapping, and exploration with underwater and surface vehicles.
-                </p>
-            </div>
+    <!-- Work Experience Timeline -->
+    <div class="timeline-section">
+        <div class="section-header scroll-reveal">
+            <h2>Work Experience</h2>
+            <p>My professional development journey</p>
         </div>
 
-        <!-- Linear TA -->
-        <div class="timeline-item">
-            <div class="timeline-icon">
-                <i class="fas fa-book"></i>
+        <div class="timeline">
+            <!-- VIP -->
+            <div class="timeline-item scroll-reveal-left">
+                <div class="timeline-icon">
+                    <i class="fas fa-anchor"></i>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">August 2025 - Present</span>
+                    <h3 class="timeline-title">Undergraduate Researcher</h3>
+                    <p class="timeline-subtitle">GT Vertical Integration Project</p>
+                    <p class="timeline-description">
+                        Conducting research in maritime robotics, focusing on sensing and perception of unstructured marine environments. Utilizing image processing and software development to support navigation, mapping, and exploration with underwater and surface vehicles.
+                    </p>
+                </div>
             </div>
-            <div class="timeline-content">
-                <span class="timeline-date">August 2025 - Present</span>
-                <h3 class="timeline-title">Linear Algebra Teaching Assistant</h3>
-                <p class="timeline-subtitle"> GT Department of Mathematics </p>
-                <p class="timeline-description">
-                    Leading weekly teaching sessions, introducing and elaborating fundamental linear algebra
-                    topics to a large class of undergraduate students. Involved in grading, assignment creation,
-                    and holding office hours/review.
-                </p>
-            </div>
-        </div>
 
-        <!-- Discrete TA -->
-        <div class="timeline-item">
-            <div class="timeline-icon">
-                <i class="fas fa-book"></i>
+            <!-- Linear TA -->
+            <div class="timeline-item scroll-reveal-right">
+                <div class="timeline-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">August 2025 - Present</span>
+                    <h3 class="timeline-title">Linear Algebra Teaching Assistant</h3>
+                    <p class="timeline-subtitle">GT Department of Mathematics</p>
+                    <p class="timeline-description">
+                        Leading weekly teaching sessions, introducing and elaborating fundamental linear algebra topics to a large class of undergraduate students. Involved in grading, assignment creation, and holding office hours/review.
+                    </p>
+                </div>
             </div>
-            <div class="timeline-content">
-                <span class="timeline-date">May 2025 - Present</span>
-                <h3 class="timeline-title">Discrete Mathematics Teaching Assistant</h3>
-                <p class="timeline-subtitle"> GT College of Computing </p>
-                <p class="timeline-description">
-                    Assist in teaching Discrete Mathematics at Georgia Tech by holding office hours, grading, and supporting student understanding of core concepts like logic, basic proofs, set theory, introductory combinatorics, and graph theory.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Arditi -->
-        <div class="timeline-item">
-            <div class="timeline-icon">
-                <i class="fas fa-pizza-slice"></i>
-            </div>
-            <div class="timeline-content">
-                <span class="timeline-date">September 2022 - April 2023</span>
-                <h3 class="timeline-title">Local Service Worker</h3>
-                <p class="timeline-subtitle">Arditi Pizzeria</p>
-                <p class="timeline-description">
-                    Provided friendly customer service, prepared food orders, and maintained
-                    cleanliness in a fast-paced local pizzeria.
-                </p>
-            </div>
-        </div>
 
-        <!-- T3 -->
-        <div class="timeline-item">
-            <div class="timeline-icon">
-                <i class="fas fa-pencil"></i>
+            <!-- Discrete TA -->
+            <div class="timeline-item scroll-reveal-left">
+                <div class="timeline-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">May 2025 - Present</span>
+                    <h3 class="timeline-title">Discrete Mathematics Teaching Assistant</h3>
+                    <p class="timeline-subtitle">GT College of Computing</p>
+                    <p class="timeline-description">
+                        Assist in teaching Discrete Mathematics at Georgia Tech by holding office hours, grading, and supporting student understanding of core concepts like logic, basic proofs, set theory, introductory combinatorics, and graph theory.
+                    </p>
+                </div>
             </div>
-            <div class="timeline-content">
-                <span class="timeline-date"> October 2020 - June 2021 </span>
-                <h3 class="timeline-title"> Non-Profit Tutor </h3>
-                <p class="timeline-subtitle"> Teens Tutor Teens </p>
-                <p class="timeline-description">
-                    Offered free online tutoring to students during the COVID-19 pandemic for
-                    a 501(c)(3) non-profit organization.
-                </p>
+            
+            <!-- Arditi -->
+            <div class="timeline-item scroll-reveal-right">
+                <div class="timeline-icon">
+                    <i class="fas fa-pizza-slice"></i>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">September 2022 - April 2023</span>
+                    <h3 class="timeline-title">Local Service Worker</h3>
+                    <p class="timeline-subtitle">Arditi Pizzeria</p>
+                    <p class="timeline-description">
+                        Provided friendly customer service, prepared food orders, and maintained cleanliness in a fast-paced local pizzeria.
+                    </p>
+                </div>
+            </div>
+
+            <!-- T3 -->
+            <div class="timeline-item scroll-reveal-left">
+                <div class="timeline-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">October 2020 - June 2021</span>
+                    <h3 class="timeline-title">Non-Profit Tutor</h3>
+                    <p class="timeline-subtitle">Teens Tutor Teens</p>
+                    <p class="timeline-description">
+                        Offered free online tutoring to students during the COVID-19 pandemic for a 501(c)(3) non-profit organization.
+                    </p>
+                </div>
             </div>
         </div>
-
     </div>
 
     <script>
@@ -616,10 +715,35 @@
                     item.classList.add('active');
                 }
             });
-        });
-    </script>
 
-    <script>
+            // Initialize scroll reveal
+            initScrollReveal();
+        });
+
+        // Scroll Reveal Animation
+        function initScrollReveal() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    } else {
+                        // Optional: Remove class when scrolling back up for re-animation
+                        entry.target.classList.remove('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all scroll-reveal elements
+            const scrollElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
+            scrollElements.forEach(el => observer.observe(el));
+        }
+
         // Interactive Background
         const bgContainer = document.getElementById('interactive-bg');
         const particleCount = 100;
