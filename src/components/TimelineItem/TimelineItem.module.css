@@ -1,0 +1,108 @@
+.timelineItem {
+  position: relative;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.timelineItem:nth-child(odd) {
+  padding-right: calc(50% + 2rem);
+  text-align: right;
+}
+
+.timelineItem:nth-child(even) {
+  padding-left: calc(50% + 2rem);
+}
+
+.timelineContent {
+  background: var(--sub-white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(67, 97, 238, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timelineContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sub-primary), var(--sub-primary-light));
+}
+
+.timelineContent:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(67, 97, 238, 0.15);
+}
+
+.timelineDate {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--sub-primary), var(--sub-primary-light));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.timelineTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--sub-primary-dark);
+}
+
+.timelineSubtitle {
+  font-size: 1rem;
+  color: var(--sub-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.timelineDescription {
+  color: var(--sub-gray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.timelineIcon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: var(--sub-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--sub-primary-light);
+  color: var(--sub-primary);
+  font-size: 1.2rem;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.timelineItem:hover .timelineIcon {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 0 4px var(--sub-primary);
+}
+
+@media (max-width: 768px) {
+  .timelineItem:nth-child(odd),
+  .timelineItem:nth-child(even) {
+    padding: 0;
+    padding-left: 70px;
+    text-align: left;
+  }
+
+  .timelineIcon {
+    left: 31px;
+  }
+}

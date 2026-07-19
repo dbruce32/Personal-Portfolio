@@ -1,0 +1,106 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Theme Variables */
+:root {
+  /* Dark theme (home page) */
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --secondary: #f59e0b;
+  --accent: #ec4899;
+  --dark: #0f172a;
+  --darker: #020617;
+  --gray: #64748b;
+  --light-gray: #e2e8f0;
+  --white: #f8fafc;
+  --glass: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(99, 102, 241, 0.3);
+
+  /* Light theme (subpages) */
+  --sub-primary: #4361ee;
+  --sub-primary-light: #4895ef;
+  --sub-primary-dark: #3a0ca3;
+  --sub-dark: #14213d;
+  --sub-gray: #6c757d;
+  --sub-light-gray: #e9ecef;
+  --sub-white: #ffffff;
+  --sub-bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Shared Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-100px) rotate(90deg); }
+  50% { transform: translateY(-50px) rotate(180deg); }
+  75% { transform: translateY(-120px) rotate(270deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
