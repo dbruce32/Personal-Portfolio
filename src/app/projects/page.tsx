@@ -1,27 +1,36 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
-import ProjectCard from '@/components/ProjectCard/ProjectCard';
 import Footer from '@/components/Footer/Footer';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'DYLAN BRUCE - Projects',
+  title: 'Dylan Bruce - Projects',
 };
 
 const projects = [
   {
-    title: 'Movie Revenue Prediction Model',
+    title: 'PogoDB',
     description:
-      'Developed a machine learning model using a TMDb movie database. Predicts movie revenue based on ratings, release date, and other factors. Documented on my github pages.',
-    tags: ['Python', 'Scikit-Learn', 'NumPy', 'Keras'],
+      'Community-driven Pokémon GO database and companion tool. I built the custom static JSON API that powers it — fetching upstream data, computing DPS/STAB stats at build time, and deploying per-Pokémon endpoints to GitHub Pages.',
+    tags: ['TypeScript', 'Node.js', 'GitHub Actions', 'REST API', 'Vitest'],
     links: [
-      { label: 'Source Code', href: 'https://github.com/dbruce32/Movie-Success-Prediction', icon: 'fab fa-github' },
+      { label: 'Main Project', href: 'https://github.com/S-Tier-Devs/pogo-db', icon: 'fab fa-github' },
+      { label: 'API', href: 'https://github.com/S-Tier-Devs/pogo-db-api', icon: 'fas fa-server' },
     ],
   },
   {
-    title: 'Travel App: WanderSync',
+    title: 'Movie Revenue Prediction Model',
     description:
-      'A travel application for users to plan trips for themselves or with others. Developed in a group of five for CS 2340 at Georgia Tech.',
+      'Machine learning model trained on TMDb data to predict movie revenue from ratings, release timing, and genre features. Built end-to-end — data cleaning, feature engineering, model selection, and evaluation.',
+    tags: ['Python', 'Scikit-Learn', 'NumPy', 'Keras'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/dbruce32/Movie-Success-Prediction', icon: 'fab fa-github' },
+    ],
+  },
+  {
+    title: 'WanderSync',
+    description:
+      'Collaborative travel planning app developed in a team of five for CS 2340. Users create trips, share itineraries, and coordinate logistics in real time.',
     tags: ['Java', 'Firebase', 'Android Studio', 'XML', 'Agile'],
     links: [],
   },
@@ -32,15 +41,43 @@ export default function ProjectsPage() {
     <div className={styles.body}>
       <Navbar />
 
-      <header className={styles.header}>
-        <h1 className={styles.title}>My Projects</h1>
-        <p className={styles.subtitle}>A collection of my recent work and contributions</p>
-      </header>
+      <div className={styles.content}>
+        <section className={styles.intro}>
+          <h1 className={styles.title}>Projects</h1>
+          <p className={styles.subtitle}>Things I&apos;ve built and contributed to.</p>
+        </section>
 
-      <div className={styles.projectsContainer}>
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
-        ))}
+        <div className={styles.projectList}>
+          {projects.map((project) => (
+            <article key={project.title} className={styles.project}>
+              <div className={styles.projectHeader}>
+                <h2 className={styles.projectTitle}>{project.title}</h2>
+                {project.links.length > 0 && (
+                  <div className={styles.projectLinks}>
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.projectLink}
+                        aria-label={link.label}
+                      >
+                        <i className={link.icon}></i>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <p className={styles.projectDesc}>{project.description}</p>
+              <div className={styles.tags}>
+                {project.tags.map((tag) => (
+                  <span key={tag} className={styles.tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
 
       <Footer />

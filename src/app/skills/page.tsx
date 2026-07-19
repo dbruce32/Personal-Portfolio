@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
-import SkillCategory from '@/components/SkillCategory/SkillCategory';
 import Footer from '@/components/Footer/Footer';
 import styles from './page.module.css';
 
@@ -10,49 +9,46 @@ export const metadata: Metadata = {
 
 const skillCategories = [
   {
-    title: 'Backend Skills',
-    titleIcon: 'fas fa-wrench',
+    title: 'Languages',
     skills: [
-      { name: 'Java', description: 'Object-Oriented Programming language', icon: 'fab fa-java' },
-      { name: 'Python', description: 'General purpose high-level programming language', icon: 'fab fa-python' },
-      { name: 'C/C++', description: 'General purpose low-level programming language', icon: 'fas fa-c' },
-      { name: 'MIPS Assembly', description: 'Low-level language to control a MIPS microprocessor', icon: 'fa-solid fa-gears' },
+      { name: 'Python', icon: 'fab fa-python' },
+      { name: 'Java', icon: 'fab fa-java' },
+      { name: 'C/C++', icon: 'fas fa-c' },
+      { name: 'JavaScript', icon: 'fab fa-js' },
+      { name: 'MIPS Assembly', icon: 'fa-solid fa-gears' },
     ],
   },
   {
-    title: 'Frontend Skills',
-    titleIcon: 'fas fa-user-tie',
+    title: 'Frontend',
     skills: [
-      { name: 'HTML/CSS', description: 'Basic languages for structuring web pages', icon: 'fas fa-project-diagram' },
-      { name: 'JavaScript', description: 'High level programming language for dynamic websites', icon: 'fab fa-js' },
-      { name: 'React.js', description: 'JavaScript runtime for building scalable network applications', icon: 'fa-brands fa-react' },
+      { name: 'React.js', icon: 'fa-brands fa-react' },
+      { name: 'HTML/CSS', icon: 'fab fa-html5' },
+      { name: 'Next.js', icon: 'fas fa-n' },
     ],
   },
   {
-    title: 'Tools & Practices',
-    titleIcon: 'fas fa-cloud',
+    title: 'Libraries & Frameworks',
     skills: [
-      { name: 'Git', description: 'Distributed version control system', icon: 'fab fa-github' },
-      { name: 'Docker', description: 'Containerization and packaging of applications and dependencies', icon: 'fab fa-docker' },
-      { name: 'Agile', description: 'Procedural project development methodology', icon: 'fas fa-recycle' },
-    ],
-  },
-  {
-    title: 'Libraries',
-    titleIcon: 'fas fa-book',
-    skills: [
-      { name: 'Scikit-Learn', description: 'Open-source machine learning library', icon: 'fas fa-brain' },
-      { name: 'NumPy', description: 'Fundamental package for scientific computing', icon: 'fas fa-calculator' },
-      { name: 'Pandas', description: 'Open-source data analysis and manipulation tool', icon: 'fas fa-table' },
-      { name: 'Matplotlib', description: 'Comprehensive data visualization tool', icon: 'fas fa-chart-bar' },
+      { name: 'Scikit-Learn', icon: 'fas fa-brain' },
+      { name: 'NumPy', icon: 'fas fa-calculator' },
+      { name: 'Pandas', icon: 'fas fa-table' },
+      { name: 'Matplotlib', icon: 'fas fa-chart-bar' },
     ],
   },
   {
     title: 'Databases',
-    titleIcon: 'fas fa-database',
     skills: [
-      { name: 'MySQL', description: 'Open-source relational DBMS', icon: 'fas fa-server' },
-      { name: 'Firebase', description: 'Backend cloud computing service with real-time databases', icon: 'fas fa-fire' },
+      { name: 'MySQL', icon: 'fas fa-server' },
+      { name: 'Firebase', icon: 'fas fa-fire' },
+    ],
+  },
+  {
+    title: 'Tools & Practices',
+    skills: [
+      { name: 'Git', icon: 'fab fa-git-alt' },
+      { name: 'Docker', icon: 'fab fa-docker' },
+      { name: 'Agile/Scrum', icon: 'fas fa-recycle' },
+      { name: 'Linux', icon: 'fab fa-linux' },
     ],
   },
 ];
@@ -62,14 +58,28 @@ export default function SkillsPage() {
     <div className={styles.body}>
       <Navbar />
 
-      <header className={styles.header}>
-        <h1 className={styles.title}>My Skills</h1>
-        <p className={styles.tagline}>Skills in Software Engineering, Data Analysis, and Machine Learning</p>
-      </header>
+      <div className={styles.content}>
+        <section className={styles.intro}>
+          <h1 className={styles.title}>Skills</h1>
+          <p className={styles.subtitle}>
+            Software engineering, data analysis, and machine learning.
+          </p>
+        </section>
 
-      {skillCategories.map((category) => (
-        <SkillCategory key={category.title} {...category} />
-      ))}
+        {skillCategories.map((category) => (
+          <section key={category.title} className={styles.category}>
+            <h2 className={styles.categoryTitle}>{category.title}</h2>
+            <div className={styles.skillsGrid}>
+              {category.skills.map((skill) => (
+                <span key={skill.name} className={styles.skill}>
+                  <i className={`${skill.icon} ${styles.skillIcon}`}></i>
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
 
       <Footer />
     </div>
