@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Navbar from '@/components/Navbar/Navbar';
 import ContourBackground from '@/components/ContourBackground/ContourBackground';
+import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
 const techStack = [
@@ -22,12 +23,13 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.profileImageContainer}>
           <Image
-            src="/images/db.png"
+            src={getAssetPath("/images/db.png")}
             alt="Dylan Bruce"
             width={160}
             height={160}
             className={styles.profileImage}
             priority
+            unoptimized
           />
         </div>
 
