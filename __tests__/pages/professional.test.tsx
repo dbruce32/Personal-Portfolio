@@ -14,25 +14,24 @@ describe('Professional Page', () => {
 
   it('renders the summary', () => {
     render(<ProfessionalPage />);
-    expect(screen.getByText(/Third-year CS major/)).toBeInTheDocument();
-  });
-
-  it('renders the resume download link', () => {
-    render(<ProfessionalPage />);
-    expect(screen.getByText(/Download Resume/)).toBeInTheDocument();
+    expect(screen.getByText(/CS major and math minor at Georgia Tech/)).toBeInTheDocument();
   });
 
   it('renders education section', () => {
     render(<ProfessionalPage />);
     expect(screen.getByText('Education')).toBeInTheDocument();
-    expect(screen.getByText('B.S. Computer Science')).toBeInTheDocument();
+    expect(screen.getByText(/B.S. Computer Science/)).toBeInTheDocument();
     expect(screen.getByText('Georgia Institute of Technology')).toBeInTheDocument();
   });
 
   it('renders experience items', () => {
     render(<ProfessionalPage />);
-    expect(screen.getByText('Undergraduate Researcher')).toBeInTheDocument();
+    expect(screen.getByText('Software Engineer II Intern')).toBeInTheDocument();
+    expect(screen.getByText('Software Engineer Intern')).toBeInTheDocument();
+    expect(screen.getByText('Machine Learning Researcher')).toBeInTheDocument();
     expect(screen.getByText('Linear Algebra Teaching Assistant')).toBeInTheDocument();
     expect(screen.getByText('Discrete Math Teaching Assistant')).toBeInTheDocument();
+    expect(screen.getByText('Walmart Global Tech')).toBeInTheDocument();
+    expect(screen.getByText('MathWorks')).toBeInTheDocument();
   });
 });
