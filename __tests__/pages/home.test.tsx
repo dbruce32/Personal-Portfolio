@@ -2,48 +2,42 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Home from '@/app/page';
 
-// Mock the ParticleCanvas since it uses canvas APIs
-jest.mock('@/components/ParticleCanvas/ParticleCanvas', () => {
-  return function MockParticleCanvas() {
-    return <canvas data-testid="particle-canvas" />;
+// Mock the ContourBackground since it uses browser APIs
+jest.mock('@/components/ContourBackground/ContourBackground', () => {
+  return function MockContourBackground() {
+    return <svg data-testid="contour-bg" />;
   };
 });
 
 describe('Home Page', () => {
-  it('renders the hero title', () => {
+  it('renders the name', () => {
     render(<Home />);
-    const elements = screen.getAllByText('DYLAN BRUCE');
-    expect(elements.length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('Dylan Bruce')).toBeInTheDocument();
   });
 
-  it('renders the role subtitle', () => {
+  it('renders the tagline', () => {
     render(<Home />);
-    expect(screen.getByText(/Software Engineering/)).toBeInTheDocument();
+    expect(screen.getByText(/CS student at Georgia Tech/)).toBeInTheDocument();
   });
 
-  it('renders the hero description', () => {
-    render(<Home />);
-    expect(screen.getByText(/Georgia Tech Computer Science student/)).toBeInTheDocument();
-  });
-
-  it('renders CTA buttons', () => {
-    render(<Home />);
-    expect(screen.getByText(/View My Work/)).toBeInTheDocument();
-    expect(screen.getByText(/Connect/)).toBeInTheDocument();
-  });
-
-  it('renders all panel cards', () => {
+  it('renders navigation cards', () => {
     render(<Home />);
     expect(screen.getByText('Technical Skills')).toBeInTheDocument();
-    expect(screen.getByText('Featured Projects')).toBeInTheDocument();
-    expect(screen.getByText('Education & Experience')).toBeInTheDocument();
-    expect(screen.getByText('Get In Touch')).toBeInTheDocument();
+    expect(screen.getByText('Projects')).toBeInTheDocument();
+    expect(screen.getByText('Experience')).toBeInTheDocument();
+    expect(screen.getByText('Contact')).toBeInTheDocument();
   });
 
-  it('renders tech stack items', () => {
+  it('renders tech stack tags', () => {
     render(<Home />);
-    expect(screen.getByText('Python')).toBeInTheDocument();
-    expect(screen.getByText('JavaScript')).toBeInTheDocument();
-    expect(screen.getByText('React')).toBeInTheDocument();
+    expect(screen.getByText('Technologies I Work With')).toBeInTheDocument();
+    expect(screen.getAllByText(/Python/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/React/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Git/).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('renders the profile image', () => {
+    render(<Home />);
+    expect(screen.getByAltText('Dylan Bruce')).toBeInTheDocument();
   });
 });

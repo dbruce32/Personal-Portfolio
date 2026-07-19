@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
 import TimelineItem from '@/components/TimelineItem/TimelineItem';
 import Footer from '@/components/Footer/Footer';
+import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -71,7 +72,7 @@ export default function ProfessionalPage() {
               </div>
               About Me
             </div>
-            <a href="/documents/dylan_bruce_resume.pdf" className={styles.downloadCv} download>
+            <a href={getAssetPath("/documents/dylan_bruce_resume.pdf")} className={styles.downloadCv} download>
               <i className="fas fa-download"></i>
               Download CV
             </a>
