@@ -14,6 +14,7 @@ const experiences = [
     title: 'Software Engineer II Intern',
     org: 'Walmart Global Tech',
     location: 'Bentonville, AR',
+    logo: '/images/wgt.png',
     description:
       'Built a full-stack operational dashboard (Next.js, Tailwind, Java Spring Boot) to consolidate Enterprise Inventory data pipelines. Reduced data access times by 50% across separate systems. Designed CI/CD pipelines with Maven and deployed containerized services on Walmart\'s cloud platform.',
   },
@@ -22,6 +23,7 @@ const experiences = [
     title: 'Software Engineer Intern',
     org: 'MathWorks',
     location: 'Natick, MA',
+    logo: '/images/mathworks.png',
     description:
       'Expanded C++ test coverage across a multi-million-line codebase by 1% using CMake-based CI/CD. Created 12+ reusable GenAI skills for test generation and designed agentic workflows that accelerated test coverage efficiency by 50%.',
   },
@@ -30,6 +32,7 @@ const experiences = [
     title: 'Machine Learning Researcher',
     org: 'Georgia Tech VIP Aquabots',
     location: 'Atlanta, GA',
+    logo: '/images/yellow-jacket.svg',
     description:
       'Increased InceptionV4 CNN accuracy by ~10% through enhanced preprocessing and normalization for plankton image classification. Developing advanced preprocessing pipelines for underwater imagery.',
   },
@@ -38,6 +41,7 @@ const experiences = [
     title: 'Linear Algebra Teaching Assistant',
     org: 'GT Department of Mathematics',
     location: 'Atlanta, GA',
+    logo: '/images/yellow-jacket.svg',
     description:
       'Leading weekly sessions on fundamental linear algebra topics. Grading, assignment creation, and office hours for undergraduate students.',
   },
@@ -46,6 +50,7 @@ const experiences = [
     title: 'Discrete Math Teaching Assistant',
     org: 'GT College of Computing',
     location: 'Atlanta, GA',
+    logo: '/images/yellow-jacket.svg',
     description:
       'Supporting student understanding of logic, proofs, set theory, combinatorics, and graph theory through office hours and grading.',
   },
@@ -133,6 +138,9 @@ export default function ProfessionalPage() {
                     <span className={styles.expDate}>{exp.date}</span>
                   </div>
                   <div className={styles.expMeta}>
+                    {exp.logo && (
+                      <img src={getAssetPath(exp.logo)} alt={exp.org} className={styles.expLogo} />
+                    )}
                     <p className={styles.expOrg}>{exp.org}</p>
                     <span className={styles.expLocation}>{exp.location}</span>
                   </div>

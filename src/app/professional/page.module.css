@@ -208,6 +208,13 @@
   font-weight: 500;
 }
 
+.expLogo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
 .expMeta {
   display: flex;
   align-items: center;
