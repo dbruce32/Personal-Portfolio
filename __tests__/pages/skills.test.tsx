@@ -9,23 +9,23 @@ jest.mock('next/navigation', () => ({
 describe('Skills Page', () => {
   it('renders the page title', () => {
     render(<SkillsPage />);
-    expect(screen.getByText('My Skills')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Skills' })).toBeInTheDocument();
   });
 
   it('renders skill categories', () => {
     render(<SkillsPage />);
-    expect(screen.getByText('Backend Skills')).toBeInTheDocument();
-    expect(screen.getByText('Frontend Skills')).toBeInTheDocument();
+    expect(screen.getByText('Languages')).toBeInTheDocument();
+    expect(screen.getByText('Frontend')).toBeInTheDocument();
     expect(screen.getByText('Tools & Practices')).toBeInTheDocument();
-    expect(screen.getByText('Libraries')).toBeInTheDocument();
     expect(screen.getByText('Databases')).toBeInTheDocument();
   });
 
   it('renders individual skills', () => {
     render(<SkillsPage />);
-    expect(screen.getByText('Java')).toBeInTheDocument();
     expect(screen.getByText('Python')).toBeInTheDocument();
-    expect(screen.getByText('Git')).toBeInTheDocument();
+    expect(screen.getByText('Java')).toBeInTheDocument();
+    expect(screen.getByText('React.js')).toBeInTheDocument();
     expect(screen.getByText('MySQL')).toBeInTheDocument();
+    expect(screen.getByText('Git')).toBeInTheDocument();
   });
 });

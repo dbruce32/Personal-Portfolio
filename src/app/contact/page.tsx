@@ -1,69 +1,127 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { useState } from 'react';
 import Navbar from '@/components/Navbar/Navbar';
-import Footer from '@/components/Footer/Footer';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'Dylan Bruce - Contact',
-};
-
-const contactCards = [
-  {
-    icon: 'fas fa-envelope',
-    title: 'Send an Email',
-    description: 'Drop me a line directly. I typically respond within 24 hours and love discussing new opportunities.',
-    linkText: 'dylanbruce.cs@gmail.com',
-    linkHref: 'mailto:dylanbruce.cs@gmail.com',
-  },
-  {
-    icon: 'fab fa-linkedin',
-    title: 'Connect on LinkedIn',
-    description: "Let's network professionally! Check out my experience and connect for career opportunities.",
-    linkText: 'View Profile',
-    linkHref: 'https://www.linkedin.com/in/dylan-bruce-261b101ba',
-  },
-  {
-    icon: 'fab fa-github',
-    title: 'Github Repositories',
-    description: 'Look at my work! See my coding style and skills in action.',
-    linkText: 'Browse GitHub',
-    linkHref: 'https://github.com/dbruce32',
-  },
+const contacts = [
+  { command: 'email', label: 'dylanbruce.cs@gmail.com', href: 'mailto:dylanbruce.cs@gmail.com', icon: 'fas fa-envelope' },
+  { command: 'linkedin', label: 'linkedin.com/in/dylangbruce', href: 'https://www.linkedin.com/in/dylangbruce', icon: 'fab fa-linkedin' },
+  { command: 'github', label: 'github.com/dbruce32', href: 'https://github.com/dbruce32', icon: 'fab fa-github' },
 ];
 
+const responses: Record<string, string> = {
+  help: 'Available commands: email, linkedin, github, about, clear',
+  about: 'CS + Math @ Georgia Tech. Building software, analyzing data, always learning.',
+  email: '→ dylanbruce.cs@gmail.com',
+  linkedin: '→ linkedin.com/in/dylangbruce',
+  github: '→ github.com/dbruce32',
+};
+
+interface HistoryEntry {
+  input: string;
+  output: string;
+  link?: string;
+}
+
 export default function ContactPage() {
+  const [input, setInput] = useState('');
+  const [history, setHistory] = useState<HistoryEntry[]>([
+    { input: '', output: 'Type "help" to see available commands.' },
+  ]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cmd = input.trim().toLowerCase();
+
+    if (cmd === 'clear') {
+      setHistory([{ input: '', output: 'Type "help" to see available commands.' }]);
+      setInput('');
+      return;
+    }
+
+    const contact = contacts.find((c) => c.command === cmd);
+    const output = responses[cmd] || `Command not found: "${cmd}". Type "help" for options.`;
+    const link = contact?.href;
+
+    setHistory((prev) => [...prev, { input: cmd, output, link }]);
+    setInput('');
+
+    if (link) {
+      window.open(link, cmd === 'email' ? '_self' : '_blank');
+    }
+  };
+
   return (
     <div className={styles.body}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Hire me!!</h1>
-        <p className={styles.tagline}>Please reach out! I&apos;d love to hear from you.</p>
-      </header>
-
       <Navbar />
 
-      <div className={styles.contactContainer}>
-        <div className={styles.contactGrid}>
-          {contactCards.map((card) => (
-            <div key={card.title} className={styles.contactCard}>
-              <div className={styles.contactIcon}>
-                <i className={card.icon}></i>
-              </div>
-              <h3 className={styles.contactTitle}>{card.title}</h3>
-              <p className={styles.contactDescription}>{card.description}</p>
-              <a
-                href={card.linkHref}
-                target={card.linkHref.startsWith('mailto') ? undefined : '_blank'}
-                rel={card.linkHref.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                className={styles.contactLink}
-              >
-                {card.linkText}
-              </a>
+      <div className={styles.content}>
+        <section className={styles.intro}>
+          <h1 className={styles.title}>Contact</h1>
+          <p className={styles.subtitle}>Let&apos;s connect. Use the terminal below or the links on the side.</p>
+        </section>
+
+        <div className={styles.layout}>
+          {/* Terminal */}
+          <div className={styles.terminal}>
+            <div className={styles.terminalHeader}>
+              <span className={styles.dot} data-color="red"></span>
+              <span className={styles.dot} data-color="yellow"></span>
+              <span className={styles.dot} data-color="green"></span>
+              <span className={styles.terminalTitle}>dylan@portfolio ~ contact</span>
             </div>
-          ))}
+            <div className={styles.terminalBody}>
+              {history.map((entry, i) => (
+                <div key={i} className={styles.historyEntry}>
+                  {entry.input && (
+                    <div className={styles.inputLine}>
+                      <span className={styles.prompt}>$</span> {entry.input}
+                    </div>
+                  )}
+                  <div className={styles.outputLine}>
+                    {entry.link ? (
+                      <a href={entry.link} target="_blank" rel="noopener noreferrer" className={styles.outputLink}>
+                        {entry.output}
+                      </a>
+                    ) : (
+                      entry.output
+                    )}
+                  </div>
+                </div>
+              ))}
+              <form onSubmit={handleSubmit} className={styles.inputForm}>
+                <span className={styles.prompt}>$</span>
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className={styles.inputField}
+                  autoFocus
+                  spellCheck={false}
+                  aria-label="Terminal input"
+                />
+              </form>
+            </div>
+          </div>
+
+          {/* Quick links sidebar */}
+          <aside className={styles.sidebar}>
+            {contacts.map((c) => (
+              <a
+                key={c.command}
+                href={c.href}
+                target={c.command === 'email' ? '_self' : '_blank'}
+                rel="noopener noreferrer"
+                className={styles.quickLink}
+              >
+                <i className={`${c.icon} ${styles.quickIcon}`}></i>
+                <span className={styles.quickLabel}>{c.label}</span>
+              </a>
+            ))}
+          </aside>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

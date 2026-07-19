@@ -1,133 +1,123 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
-import TimelineItem from '@/components/TimelineItem/TimelineItem';
 import Footer from '@/components/Footer/Footer';
+import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Dylan Bruce - Professional Timeline',
+  title: 'Dylan Bruce - Professional',
 };
 
 const experiences = [
   {
-    date: 'August 2025 - Present',
+    date: 'Aug 2025 – Present',
     title: 'Undergraduate Researcher',
-    subtitle: 'GT Vertical Integration Project',
+    org: 'GT Vertical Integration Project',
     description:
-      'Conducting research in maritime robotics, focusing on sensing and perception of unstructured marine environments. Utilizing image processing and software development to support navigation, mapping, and exploration with underwater and surface vehicles.',
-    icon: 'fas fa-anchor',
+      'Research in maritime robotics — sensing and perception of unstructured marine environments. Image processing and software development for navigation and exploration.',
   },
   {
-    date: 'August 2025 - Present',
+    date: 'Aug 2025 – Present',
     title: 'Linear Algebra Teaching Assistant',
-    subtitle: 'GT Department of Mathematics',
+    org: 'GT Department of Mathematics',
     description:
-      'Leading weekly teaching sessions, introducing and elaborating fundamental linear algebra topics to a large class of undergraduate students. Involved in grading, assignment creation, and holding office hours/review.',
-    icon: 'fas fa-calculator',
+      'Leading weekly sessions on fundamental linear algebra topics. Grading, assignment creation, and office hours for undergraduate students.',
   },
   {
-    date: 'May 2025 - Present',
-    title: 'Discrete Mathematics Teaching Assistant',
-    subtitle: 'GT College of Computing',
+    date: 'May 2025 – Present',
+    title: 'Discrete Math Teaching Assistant',
+    org: 'GT College of Computing',
     description:
-      'Assist in teaching Discrete Mathematics at Georgia Tech by holding office hours, grading, and supporting student understanding of core concepts like logic, basic proofs, set theory, introductory combinatorics, and graph theory.',
-    icon: 'fas fa-cube',
+      'Supporting student understanding of logic, proofs, set theory, combinatorics, and graph theory through office hours and grading.',
   },
   {
-    date: 'September 2022 - April 2023',
-    title: 'Local Service Worker',
-    subtitle: 'Arditi Pizzeria',
+    date: 'Sep 2022 – Apr 2023',
+    title: 'Service Worker',
+    org: 'Arditi Pizzeria',
     description:
-      'Provided friendly customer service, prepared food orders, and maintained cleanliness in a fast-paced local pizzeria.',
-    icon: 'fas fa-pizza-slice',
+      'Customer service, food preparation, and operations in a fast-paced environment.',
   },
   {
-    date: 'October 2020 - June 2021',
+    date: 'Oct 2020 – Jun 2021',
     title: 'Non-Profit Tutor',
-    subtitle: 'Teens Tutor Teens',
+    org: 'Teens Tutor Teens',
     description:
-      'Offered free online tutoring to students during the COVID-19 pandemic for a 501(c)(3) non-profit organization.',
-    icon: 'fas fa-chalkboard-teacher',
+      'Free online tutoring during the COVID-19 pandemic for a 501(c)(3) non-profit.',
   },
 ];
 
 export default function ProfessionalPage() {
   return (
     <div className={styles.body}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Dylan Bruce - Timeline</h1>
-        <p className={styles.tagline}>Undergraduate CS + Math student at Georgia Tech</p>
-      </header>
-
       <Navbar />
 
-      {/* About & Education */}
-      <div className={styles.modernSections}>
-        <section className={styles.modernAbout}>
-          <div className={styles.aboutHeader}>
-            <div className={styles.aboutTitle}>
-              <div className={styles.aboutIcon}>
-                <i className="fas fa-user"></i>
-              </div>
-              About Me
-            </div>
-            <a href="/documents/dylan_bruce_resume.pdf" className={styles.downloadCv} download>
-              <i className="fas fa-download"></i>
-              Download CV
+      <div className={styles.content}>
+        {/* Intro */}
+        <section className={styles.intro}>
+          <h1 className={styles.title}>Professional</h1>
+          <p className={styles.summary}>
+            Third-year CS major and math minor at Georgia Tech. Experienced in software development with a foundation in Python, Java, and SQL. Seeking internships to apply technical expertise in innovative settings.
+          </p>
+          <div className={styles.actions}>
+            <a href={getAssetPath("/documents/dylan_bruce_resume.pdf")} target="_blank" rel="noopener noreferrer" className={styles.resumeLink}>
+              <i className="fas fa-external-link-alt"></i> View Resume
+            </a>
+            <a href={getAssetPath("/documents/dylan_bruce_resume.pdf")} className={styles.resumeLink} download>
+              <i className="fas fa-download"></i> Download Resume
+            </a>
+            <a href="https://www.linkedin.com/in/dylangbruce" target="_blank" rel="noopener noreferrer" className={styles.linkedinLink}>
+              <i className="fab fa-linkedin"></i> LinkedIn
             </a>
           </div>
-          <div className={styles.aboutContent}>
-            I&apos;m a third year Computer Science major and mathematics minor at Georgia Tech with experience in software development cycles and a strong foundation in Python, Java, and SQL. I&apos;m eager to secure an internship to apply my technical expertise and analytical problem-solving skills in an innovative setting. Above all, I&apos;m driven to learn from my peers while furthering my career.
+        </section>
+
+        {/* Education */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Education</h2>
+
+          <div className={styles.eduItem}>
+            <div className={styles.eduHeader}>
+              <h3 className={styles.eduDegree}>B.S. Computer Science</h3>
+              <span className={styles.eduDate}>2023 – Present</span>
+            </div>
+            <p className={styles.eduSchool}>Georgia Institute of Technology</p>
+            <p className={styles.eduDetail}>
+              Threads: Intelligence &amp; Information Internetworks. Coursework includes Machine Learning, AI, Algorithms, Systems &amp; Networks, Combinatorics, and Probability.
+            </p>
+          </div>
+
+          <div className={styles.eduItem}>
+            <div className={styles.eduHeader}>
+              <h3 className={styles.eduDegree}>High School Diploma</h3>
+              <span className={styles.eduDate}>2019 – 2023</span>
+            </div>
+            <p className={styles.eduSchool}>Brookwood High School</p>
+            <p className={styles.eduDetail}>
+              Microsoft Technology Associate (MTA) · AP Scholar with Distinction
+            </p>
           </div>
         </section>
 
-        <section className={styles.modernEducation}>
-          <div className={styles.educationTitle}>
-            <div className={styles.educationIcon}>
-              <i className="fas fa-graduation-cap"></i>
-            </div>
-            Education
-          </div>
+        {/* Experience */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Experience</h2>
 
-          <div className={styles.educationItem}>
-            <span className={styles.educationDate}>2023 - Present</span>
-            <h3 className={styles.educationItemTitle}>Bachelor of Science in Computer Science</h3>
-            <p className={styles.educationItemSubtitle}>Georgia Institute of Technology</p>
-            <div className={styles.educationDescription}>
-              <ul>
-                <li><strong>Threads/Focuses:</strong> Intelligence &amp; Information Internetworks</li>
-                <li><strong>Relevant Coursework:</strong> Machine Learning, Introduction to AI, Systems and Networks, Design and Analysis of Algorithms, Data Structures &amp; Algorithms, Combinatorics, Probability and Statistics</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className={styles.educationItem}>
-            <span className={styles.educationDate}>2019 - 2023</span>
-            <h3 className={styles.educationItemTitle}>High School Diploma</h3>
-            <p className={styles.educationItemSubtitle}>Brookwood High School</p>
-            <div className={styles.educationDescription}>
-              <ul>
-                <li><strong>Accolades:</strong></li>
-                <li>Microsoft Technology Associate (MTA)</li>
-                <li>AP Scholar with Distinction</li>
-              </ul>
-            </div>
+          <div className={styles.expList}>
+            {experiences.map((exp) => (
+              <div key={exp.title + exp.date} className={styles.expItem}>
+                <div className={styles.expDot}></div>
+                <div className={styles.expContent}>
+                  <div className={styles.expHeader}>
+                    <h3 className={styles.expTitle}>{exp.title}</h3>
+                    <span className={styles.expDate}>{exp.date}</span>
+                  </div>
+                  <p className={styles.expOrg}>{exp.org}</p>
+                  <p className={styles.expDesc}>{exp.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
-      </div>
-
-      {/* Work Experience Timeline */}
-      <div className={styles.timelineSection}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionHeaderTitle}>Work Experience</h2>
-          <p className={styles.sectionHeaderSubtitle}>My professional development journey</p>
-        </div>
-
-        <div className={styles.timeline}>
-          {experiences.map((exp) => (
-            <TimelineItem key={exp.title + exp.date} {...exp} />
-          ))}
-        </div>
       </div>
 
       <Footer />

@@ -1,56 +1,134 @@
 .body {
-  font-family: var(--font-inter), sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: var(--sub-dark);
-  line-height: 1.7;
   background: var(--sub-bg-gradient);
   min-height: 100vh;
+  color: var(--sub-dark);
+  line-height: 1.7;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-  animation: fadeIn 1s ease-out;
+.content {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+}
+
+/* Intro */
+.intro {
+  margin-bottom: 2.5rem;
 }
 
 .title {
-  text-align: center;
-  font-size: 2.75rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(to right, var(--sub-primary), var(--sub-primary-dark));
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sub-primary-dark), var(--sub-primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  text-align: center;
+  font-size: 1.05rem;
   color: var(--sub-gray);
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
 }
 
-.projectsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+/* Project List */
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Individual Project Card */
+.project {
+  background: var(--sub-white);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(67, 97, 238, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
 }
 
+.project:hover {
+  box-shadow: 0 6px 24px rgba(67, 97, 238, 0.08);
+  border-color: rgba(67, 97, 238, 0.12);
+  transform: translateY(-2px);
+}
+
+.projectHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.projectTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--sub-dark);
+}
+
+.projectLinks {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.projectLink {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sub-gray);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.projectLink:hover {
+  color: var(--sub-primary);
+  background: rgba(67, 97, 238, 0.08);
+}
+
+.projectDesc {
+  font-size: 0.92rem;
+  color: var(--sub-gray);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  padding: 0.28rem 0.7rem;
+  background: rgba(67, 97, 238, 0.06);
+  color: var(--sub-primary-dark);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .projectsContainer {
-    grid-template-columns: 1fr;
+  .content {
+    padding: 2rem 1.5rem;
   }
 
   .title {
     font-size: 2rem;
+  }
+
+  .project {
+    padding: 1.5rem;
+  }
+
+  .projectHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }

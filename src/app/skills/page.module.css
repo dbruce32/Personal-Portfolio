@@ -1,48 +1,91 @@
 .body {
-  font-family: var(--font-inter), sans-serif;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: var(--sub-dark);
-  line-height: 1.7;
   background: var(--sub-bg-gradient);
   min-height: 100vh;
+  color: var(--sub-dark);
+  line-height: 1.7;
 }
 
-.header {
-  text-align: center;
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+}
+
+/* Intro */
+.intro {
   margin-bottom: 3rem;
-  animation: fadeIn 1s ease-out;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(to right, var(--sub-primary), var(--sub-primary-dark));
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sub-primary-dark), var(--sub-primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-bottom: 0.5rem;
 }
 
-.tagline {
-  font-size: 1.1rem;
+.subtitle {
+  font-size: 1.05rem;
   color: var(--sub-gray);
-  font-weight: 400;
-  margin-bottom: 1.5rem;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Categories */
+.category {
+  margin-bottom: 2.5rem;
 }
 
+.categoryTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--sub-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(67, 97, 238, 0.12);
+}
+
+/* Skills as inline tags */
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--sub-white);
+  border: 1px solid rgba(67, 97, 238, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--sub-dark);
+  transition: all 0.2s ease;
+}
+
+.skill:hover {
+  border-color: var(--sub-primary-light);
+  box-shadow: 0 2px 10px rgba(67, 97, 238, 0.08);
+  transform: translateY(-1px);
+}
+
+.skillIcon {
+  color: var(--sub-primary);
+  font-size: 1rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .body {
-    padding: 1.5rem;
+  .content {
+    padding: 2rem 1.5rem;
   }
 
   .title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 }

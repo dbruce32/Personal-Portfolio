@@ -2,48 +2,42 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Home from '@/app/page';
 
-// Mock the ParticleCanvas since it uses canvas APIs
-jest.mock('@/components/ParticleCanvas/ParticleCanvas', () => {
-  return function MockParticleCanvas() {
-    return <canvas data-testid="particle-canvas" />;
+// Mock client components
+jest.mock('@/components/ContourBackground/ContourBackground', () => {
+  return function MockContourBackground() {
+    return <svg data-testid="contour-bg" />;
   };
 });
 
+jest.mock('next/navigation', () => ({
+  usePathname: () => '/',
+}));
+
 describe('Home Page', () => {
-  it('renders the hero title', () => {
+  it('renders the name', () => {
     render(<Home />);
-    const elements = screen.getAllByText('DYLAN BRUCE');
-    expect(elements.length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('Dylan Bruce')).toBeInTheDocument();
   });
 
-  it('renders the role subtitle', () => {
+  it('renders the tagline', () => {
     render(<Home />);
-    expect(screen.getByText(/Software Engineering/)).toBeInTheDocument();
+    expect(screen.getByText(/Computer Science/)).toBeInTheDocument();
   });
 
-  it('renders the hero description', () => {
+  it('renders the profile image', () => {
     render(<Home />);
-    expect(screen.getByText(/Georgia Tech Computer Science student/)).toBeInTheDocument();
+    expect(screen.getByAltText('Dylan Bruce')).toBeInTheDocument();
   });
 
-  it('renders CTA buttons', () => {
-    render(<Home />);
-    expect(screen.getByText(/View My Work/)).toBeInTheDocument();
-    expect(screen.getByText(/Connect/)).toBeInTheDocument();
-  });
-
-  it('renders all panel cards', () => {
-    render(<Home />);
-    expect(screen.getByText('Technical Skills')).toBeInTheDocument();
-    expect(screen.getByText('Featured Projects')).toBeInTheDocument();
-    expect(screen.getByText('Education & Experience')).toBeInTheDocument();
-    expect(screen.getByText('Get In Touch')).toBeInTheDocument();
-  });
-
-  it('renders tech stack items', () => {
+  it('renders tech stack tags', () => {
     render(<Home />);
     expect(screen.getByText('Python')).toBeInTheDocument();
-    expect(screen.getByText('JavaScript')).toBeInTheDocument();
     expect(screen.getByText('React')).toBeInTheDocument();
+    expect(screen.getByText('Docker')).toBeInTheDocument();
+  });
+
+  it('renders the navbar', () => {
+    render(<Home />);
+    expect(screen.getByText('DB')).toBeInTheDocument();
   });
 });
