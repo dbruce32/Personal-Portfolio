@@ -1,6 +1,8 @@
-import Image from 'next/image';
 import Navbar from '@/components/Navbar/Navbar';
 import ContourBackground from '@/components/ContourBackground/ContourBackground';
+import LiveClock from '@/components/LiveClock/LiveClock';
+import Magnetic from '@/components/Magnetic/Magnetic';
+import BouncyPhoto from '@/components/BouncyPhoto/BouncyPhoto';
 import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
@@ -22,18 +24,18 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.profileImageContainer}>
-          <Image
+          <BouncyPhoto
             src={getAssetPath("/images/db.png")}
             alt="Dylan Bruce"
-            width={160}
-            height={160}
+            size={160}
             className={styles.profileImage}
-            priority
-            unoptimized
           />
         </div>
 
-        <h1 className={styles.name}>Dylan Bruce</h1>
+        <Magnetic strength={0.15}>
+          <h1 className={styles.name}>Dylan Bruce</h1>
+        </Magnetic>
+
         <p className={styles.tagline}>
           Computer Science &amp; Mathematics at Georgia Tech.
           <br />
@@ -42,11 +44,15 @@ export default function Home() {
 
         <div className={styles.techGrid}>
           {techStack.map((tech) => (
-            <span key={tech.name} className={styles.techTag}>
-              <i className={tech.icon}></i> {tech.name}
-            </span>
+            <Magnetic key={tech.name} strength={0.4}>
+              <span className={styles.techTag}>
+                <i className={tech.icon}></i> {tech.name}
+              </span>
+            </Magnetic>
           ))}
         </div>
+
+        <LiveClock />
       </main>
     </div>
   );

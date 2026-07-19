@@ -1,0 +1,20 @@
+.static {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.static:hover {
+  transform: scale(1.03);
+}
+
+.bouncy {
+  position: fixed;
+  z-index: 9999;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.bouncy:active {
+  cursor: grabbing;
+}
