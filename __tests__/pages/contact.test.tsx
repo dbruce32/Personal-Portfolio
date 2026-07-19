@@ -9,29 +9,23 @@ jest.mock('next/navigation', () => ({
 describe('Contact Page', () => {
   it('renders the page title', () => {
     render(<ContactPage />);
-    expect(screen.getByText('Hire me!!')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Contact' })).toBeInTheDocument();
   });
 
-  it('renders contact cards', () => {
+  it('renders the terminal', () => {
     render(<ContactPage />);
-    expect(screen.getByText('Send an Email')).toBeInTheDocument();
-    expect(screen.getByText('Connect on LinkedIn')).toBeInTheDocument();
-    expect(screen.getByText('Github Repositories')).toBeInTheDocument();
+    expect(screen.getByText(/dylan@portfolio/)).toBeInTheDocument();
   });
 
-  it('renders contact links', () => {
+  it('renders the terminal input', () => {
+    render(<ContactPage />);
+    expect(screen.getByLabelText('Terminal input')).toBeInTheDocument();
+  });
+
+  it('renders quick links', () => {
     render(<ContactPage />);
     expect(screen.getByText('dylanbruce.cs@gmail.com')).toBeInTheDocument();
-    expect(screen.getByText('View Profile')).toBeInTheDocument();
-    expect(screen.getByText('Browse GitHub')).toBeInTheDocument();
-  });
-
-  it('renders correct link hrefs', () => {
-    render(<ContactPage />);
-    const emailLink = screen.getByText('dylanbruce.cs@gmail.com');
-    expect(emailLink).toHaveAttribute('href', 'mailto:dylanbruce.cs@gmail.com');
-
-    const githubLink = screen.getByText('Browse GitHub');
-    expect(githubLink).toHaveAttribute('href', 'https://github.com/dbruce32');
+    expect(screen.getByText('github.com/dbruce32')).toBeInTheDocument();
+    expect(screen.getByText('linkedin.com/in/dylangbruce')).toBeInTheDocument();
   });
 });
