@@ -26,7 +26,7 @@ describe('Projects Page', () => {
 
   it('renders tech tags', () => {
     render(<ProjectsPage />);
-    expect(screen.getByText('Python')).toBeInTheDocument();
+    expect(screen.getAllByText('Python').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('Scikit-Learn')).toBeInTheDocument();
     expect(screen.getByText('Firebase')).toBeInTheDocument();
   });

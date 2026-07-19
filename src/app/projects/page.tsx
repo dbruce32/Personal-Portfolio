@@ -19,6 +19,20 @@ const projects = [
     ],
   },
   {
+    title: 'FishCast',
+    description:
+      'Climate-fishery forecasting using RNNs (LSTMs) in PyTorch to predict shifts in marine species distributions. Developed with Georgia Tech PACE Supercomputing resources.',
+    tags: ['Python', 'PyTorch', 'LSTM', 'Data Analysis'],
+    links: [],
+  },
+  {
+    title: 'News2Lang',
+    description:
+      'AI-powered language learning platform built with WebDev@GT. Uses NLP and LLMs to extract phrases from real news, highlight context, and provide simplified explanations.',
+    tags: ['Next.js', 'Tailwind', 'Supabase', 'OpenAI', 'NLP'],
+    links: [],
+  },
+  {
     title: 'Movie Revenue Prediction Model',
     description:
       'Machine learning model trained on TMDb data to predict movie revenue from ratings, release timing, and genre features. Built end-to-end — data cleaning, feature engineering, model selection, and evaluation.',

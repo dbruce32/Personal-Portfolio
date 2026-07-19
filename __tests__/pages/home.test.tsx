@@ -2,10 +2,15 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Home from '@/app/page';
 
-// Mock client components
 jest.mock('@/components/ContourBackground/ContourBackground', () => {
   return function MockContourBackground() {
     return <svg data-testid="contour-bg" />;
+  };
+});
+
+jest.mock('@/components/LiveClock/LiveClock', () => {
+  return function MockLiveClock() {
+    return <div data-testid="live-clock">Clock</div>;
   };
 });
 
@@ -36,8 +41,8 @@ describe('Home Page', () => {
     expect(screen.getByText('Docker')).toBeInTheDocument();
   });
 
-  it('renders the navbar', () => {
+  it('renders the live clock', () => {
     render(<Home />);
-    expect(screen.getByText('DB')).toBeInTheDocument();
+    expect(screen.getByTestId('live-clock')).toBeInTheDocument();
   });
 });

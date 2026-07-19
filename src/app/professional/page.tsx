@@ -10,16 +10,38 @@ export const metadata: Metadata = {
 
 const experiences = [
   {
-    date: 'Aug 2025 – Present',
-    title: 'Undergraduate Researcher',
-    org: 'GT Vertical Integration Project',
+    date: 'May 2026 – Aug 2026',
+    title: 'Software Engineer II Intern',
+    org: 'Walmart Global Tech',
+    location: 'Bentonville, AR',
+    logo: '/images/wgt.png',
     description:
-      'Research in maritime robotics — sensing and perception of unstructured marine environments. Image processing and software development for navigation and exploration.',
+      'Built a full-stack operational dashboard (Next.js, Tailwind, Java Spring Boot) to consolidate Enterprise Inventory data pipelines. Reduced data access times by 50% across separate systems. Designed CI/CD pipelines with Maven and deployed containerized services on Walmart\'s cloud platform.',
+  },
+  {
+    date: 'Jan 2026 – May 2026',
+    title: 'Software Engineer Intern',
+    org: 'MathWorks',
+    location: 'Natick, MA',
+    logo: '/images/mathworks.png',
+    description:
+      'Expanded C++ test coverage across a multi-million-line codebase by 1% using CMake-based CI/CD. Created 12+ reusable GenAI skills for test generation and designed agentic workflows that accelerated test coverage efficiency by 50%.',
+  },
+  {
+    date: 'Aug 2025 – Present',
+    title: 'Machine Learning Researcher',
+    org: 'Georgia Tech VIP Aquabots',
+    location: 'Atlanta, GA',
+    logo: '/images/yellow-jacket.svg',
+    description:
+      'Increased InceptionV4 CNN accuracy by ~10% through enhanced preprocessing and normalization for plankton image classification. Developing advanced preprocessing pipelines for underwater imagery.',
   },
   {
     date: 'Aug 2025 – Present',
     title: 'Linear Algebra Teaching Assistant',
     org: 'GT Department of Mathematics',
+    location: 'Atlanta, GA',
+    logo: '/images/yellow-jacket.svg',
     description:
       'Leading weekly sessions on fundamental linear algebra topics. Grading, assignment creation, and office hours for undergraduate students.',
   },
@@ -27,6 +49,8 @@ const experiences = [
     date: 'May 2025 – Present',
     title: 'Discrete Math Teaching Assistant',
     org: 'GT College of Computing',
+    location: 'Atlanta, GA',
+    logo: '/images/yellow-jacket.svg',
     description:
       'Supporting student understanding of logic, proofs, set theory, combinatorics, and graph theory through office hours and grading.',
   },
@@ -34,6 +58,7 @@ const experiences = [
     date: 'Sep 2022 – Apr 2023',
     title: 'Service Worker',
     org: 'Arditi Pizzeria',
+    location: 'Atlanta, GA',
     description:
       'Customer service, food preparation, and operations in a fast-paced environment.',
   },
@@ -41,6 +66,7 @@ const experiences = [
     date: 'Oct 2020 – Jun 2021',
     title: 'Non-Profit Tutor',
     org: 'Teens Tutor Teens',
+    location: 'Atlanta, GA',
     description:
       'Free online tutoring during the COVID-19 pandemic for a 501(c)(3) non-profit.',
   },
@@ -56,7 +82,7 @@ export default function ProfessionalPage() {
         <section className={styles.intro}>
           <h1 className={styles.title}>Professional</h1>
           <p className={styles.summary}>
-            Third-year CS major and math minor at Georgia Tech. Experienced in software development with a foundation in Python, Java, and SQL. Seeking internships to apply technical expertise in innovative settings.
+            CS major and math minor at Georgia Tech. Two software engineering internships at Walmart Global Tech and MathWorks. Research in machine learning and experience teaching 1,000+ students.
           </p>
           <div className={styles.actions}>
             <a href={getAssetPath("/documents/dylan_bruce_resume.pdf")} target="_blank" rel="noopener noreferrer" className={styles.resumeLink}>
@@ -77,8 +103,8 @@ export default function ProfessionalPage() {
 
           <div className={styles.eduItem}>
             <div className={styles.eduHeader}>
-              <h3 className={styles.eduDegree}>B.S. Computer Science</h3>
-              <span className={styles.eduDate}>2023 – Present</span>
+              <h3 className={styles.eduDegree}>B.S. Computer Science, Minor in Mathematics</h3>
+              <span className={styles.eduDate}>2023 – May 2027</span>
             </div>
             <p className={styles.eduSchool}>Georgia Institute of Technology</p>
             <p className={styles.eduDetail}>
@@ -111,7 +137,13 @@ export default function ProfessionalPage() {
                     <h3 className={styles.expTitle}>{exp.title}</h3>
                     <span className={styles.expDate}>{exp.date}</span>
                   </div>
-                  <p className={styles.expOrg}>{exp.org}</p>
+                  <div className={styles.expMeta}>
+                    {exp.logo && (
+                      <img src={getAssetPath(exp.logo)} alt={exp.org} className={styles.expLogo} />
+                    )}
+                    <p className={styles.expOrg}>{exp.org}</p>
+                    <span className={styles.expLocation}>{exp.location}</span>
+                  </div>
                   <p className={styles.expDesc}>{exp.description}</p>
                 </div>
               </div>
