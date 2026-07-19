@@ -1,303 +1,234 @@
 .body {
-  font-family: var(--font-inter), sans-serif;
-  color: var(--sub-dark);
-  line-height: 1.7;
   background: var(--sub-bg-gradient);
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+  color: var(--sub-dark);
+  line-height: 1.7;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem 2rem 0;
-  animation: fadeIn 1s ease-out;
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+}
+
+/* Intro */
+.intro {
+  margin-bottom: 3.5rem;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(to right, var(--sub-primary), var(--sub-primary-dark));
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sub-primary-dark), var(--sub-primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-bottom: 1rem;
 }
 
-.tagline {
-  font-size: 1.1rem;
+.summary {
+  font-size: 1.05rem;
   color: var(--sub-gray);
-  font-weight: 400;
-  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
 }
 
-/* Modern Sections */
-.modernSections {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 4rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 2rem;
-}
-
-.modernAbout {
-  background: linear-gradient(135deg, var(--sub-white) 0%, #f8fafc 100%);
-  padding: 2.5rem;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(67, 97, 238, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.modernAbout::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--sub-primary), var(--sub-primary-light));
-}
-
-.aboutHeader {
+.actions {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-.aboutTitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--sub-primary-dark);
-  display: flex;
-  align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-.aboutIcon {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, var(--sub-primary), var(--sub-primary-light));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.downloadCv {
-  background: var(--sub-primary);
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  display: flex;
+.resumeLink {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--sub-primary);
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid rgba(67, 97, 238, 0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.downloadCv:hover {
-  background: var(--sub-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+.resumeLink:hover {
+  background: rgba(67, 97, 238, 0.06);
+  border-color: var(--sub-primary);
 }
 
-.aboutContent {
-  color: var(--sub-gray);
-  font-size: 1rem;
-  line-height: 1.8;
+.linkedinLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0a66c2;
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid rgba(10, 102, 194, 0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.linkedinLink:hover {
+  background: rgba(10, 102, 194, 0.06);
+  border-color: #0a66c2;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--sub-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(67, 97, 238, 0.12);
 }
 
 /* Education */
-.modernEducation {
-  background: linear-gradient(135deg, var(--sub-white) 0%, #f8fafc 100%);
-  padding: 2.5rem;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(67, 97, 238, 0.1);
-  position: relative;
-  overflow: hidden;
+.eduItem {
+  margin-bottom: 1.75rem;
 }
 
-.modernEducation::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--sub-primary-light), var(--sub-primary));
-}
-
-.educationTitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--sub-primary-dark);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.educationIcon {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, var(--sub-primary-light), var(--sub-primary));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.educationItem {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: rgba(67, 97, 238, 0.02);
-  border-radius: 16px;
-  border-left: 4px solid var(--sub-primary);
-  transition: all 0.3s ease;
-}
-
-.educationItem:hover {
-  transform: translateX(5px);
-  background: rgba(67, 97, 238, 0.04);
-}
-
-.educationItem:last-child {
+.eduItem:last-child {
   margin-bottom: 0;
 }
 
-.educationItemTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--sub-primary-dark);
-  margin-bottom: 0.25rem;
+.eduHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.educationItemSubtitle {
-  font-size: 1rem;
+.eduDegree {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sub-dark);
+}
+
+.eduDate {
+  font-size: 0.85rem;
+  color: var(--sub-gray);
+  white-space: nowrap;
+}
+
+.eduSchool {
+  font-size: 0.95rem;
   color: var(--sub-primary);
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.4rem;
 }
 
-.educationDate {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--sub-primary-light), var(--sub-primary));
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.educationDescription {
+.eduDetail {
+  font-size: 0.9rem;
   color: var(--sub-gray);
-  font-size: 0.95rem;
   line-height: 1.6;
 }
 
-.educationDescription ul {
-  margin-left: 1.5rem;
-}
-
-.educationDescription li {
-  margin-bottom: 0.25rem;
-}
-
-/* Timeline Section */
-.timelineSection {
-  margin-top: 4rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 2rem;
-}
-
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.sectionHeaderTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(to right, var(--sub-primary), var(--sub-primary-dark));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 0.5rem;
-}
-
-.sectionHeaderSubtitle {
-  color: var(--sub-gray);
-  font-size: 1.1rem;
-}
-
-.timeline {
+/* Experience */
+.expList {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 0;
+  padding-left: 1.5rem;
 }
 
-.timeline::before {
+.expList::before {
   content: '';
   position: absolute;
-  width: 4px;
-  background: var(--sub-primary-light);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgba(67, 97, 238, 0.15);
+  border-radius: 1px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.expItem {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
 }
 
+.expItem:last-child {
+  margin-bottom: 0;
+}
+
+.expDot {
+  position: absolute;
+  left: -1.5rem;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--sub-white);
+  border: 2.5px solid var(--sub-primary-light);
+  transition: all 0.2s ease;
+}
+
+.expItem:hover .expDot {
+  background: var(--sub-primary);
+  border-color: var(--sub-primary);
+}
+
+.expContent {}
+
+.expHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.expTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--sub-dark);
+}
+
+.expDate {
+  font-size: 0.8rem;
+  color: var(--sub-gray);
+  white-space: nowrap;
+}
+
+.expOrg {
+  font-size: 0.9rem;
+  color: var(--sub-primary);
+  font-weight: 500;
+  margin-top: 0.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.expDesc {
+  font-size: 0.9rem;
+  color: var(--sub-gray);
+  line-height: 1.6;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .body {
-    padding: 1.5rem;
+  .content {
+    padding: 2rem 1.5rem;
   }
 
   .title {
-    font-size: 2.25rem;
-  }
-
-  .modernSections {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .modernAbout, .modernEducation {
-    padding: 2rem;
-  }
-
-  .aboutTitle, .educationTitle {
-    font-size: 1.5rem;
-  }
-
-  .timeline::before {
-    left: 31px;
-  }
-
-  .sectionHeaderTitle {
     font-size: 2rem;
+  }
+
+  .eduHeader,
+  .expHeader {
+    flex-direction: column;
+    gap: 0.2rem;
   }
 }
