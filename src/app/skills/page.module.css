@@ -1,17 +1,19 @@
 .body {
   font-family: var(--font-inter), sans-serif;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
   color: var(--sub-dark);
   line-height: 1.7;
   background: var(--sub-bg-gradient);
   min-height: 100vh;
+  padding: 0 2rem 2rem;
 }
 
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  padding-top: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
   animation: fadeIn 1s ease-out;
 }
 

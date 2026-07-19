@@ -1,8 +1,5 @@
 .body {
   font-family: var(--font-inter), sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
   color: var(--sub-dark);
   line-height: 1.7;
   background: var(--sub-bg-gradient);
@@ -14,6 +11,7 @@
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  padding: 2rem 2rem 0;
   animation: fadeIn 1s ease-out;
 }
 
@@ -40,6 +38,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
 }
 
 .modernAbout {
@@ -219,6 +221,10 @@
 /* Timeline Section */
 .timelineSection {
   margin-top: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
 }
 
 .sectionHeader {

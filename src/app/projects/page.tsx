@@ -30,12 +30,12 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <div className={styles.body}>
+      <Navbar />
+
       <header className={styles.header}>
         <h1 className={styles.title}>My Projects</h1>
         <p className={styles.subtitle}>A collection of my recent work and contributions</p>
       </header>
-
-      <Navbar />
 
       <div className={styles.projectsContainer}>
         {projects.map((project) => (

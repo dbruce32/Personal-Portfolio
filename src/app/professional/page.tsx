@@ -55,12 +55,12 @@ const experiences = [
 export default function ProfessionalPage() {
   return (
     <div className={styles.body}>
+      <Navbar />
+
       <header className={styles.header}>
         <h1 className={styles.title}>Dylan Bruce - Timeline</h1>
         <p className={styles.tagline}>Undergraduate CS + Math student at Georgia Tech</p>
       </header>
-
-      <Navbar />
 
       {/* About & Education */}
       <div className={styles.modernSections}>

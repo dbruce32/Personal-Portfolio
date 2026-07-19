@@ -6,182 +6,66 @@
   position: relative;
 }
 
-/* Hero Section */
-.hero {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 6rem 2rem 4rem;
-  text-align: center;
+.main {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - 60px);
+  padding: 3rem 2rem;
 }
 
 .profileImageContainer {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .profileImage {
-  width: 100%;
-  height: 100%;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--sub-primary-light);
-  box-shadow: 0 12px 40px rgba(67, 97, 238, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profileImage:hover {
-  transform: scale(1.03);
-  box-shadow: 0 16px 50px rgba(67, 97, 238, 0.25);
-}
-
-.greeting {
-  font-size: 1.1rem;
-  color: var(--sub-primary);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
+  border: 3px solid var(--sub-primary-light);
+  box-shadow: 0 8px 30px rgba(67, 97, 238, 0.12);
 }
 
 .name {
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 800;
-  margin-bottom: 0.75rem;
   background: linear-gradient(135deg, var(--sub-primary-dark), var(--sub-primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-bottom: 1rem;
   line-height: 1.1;
 }
 
 .tagline {
-  font-size: 1.25rem;
-  color: var(--sub-gray);
-  font-weight: 400;
-  max-width: 550px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.7;
-}
-
-/* Cards Section */
-.cardsSection {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 2rem 4rem;
-  position: relative;
-  z-index: 1;
-}
-
-.cardsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.card {
-  display: block;
-  background: var(--sub-white);
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid rgba(67, 97, 238, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--sub-primary), var(--sub-primary-light));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(67, 97, 238, 0.1);
-  border-color: rgba(67, 97, 238, 0.15);
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.cardIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(67, 97, 238, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  color: var(--sub-primary);
-  margin-bottom: 1.25rem;
-  transition: all 0.3s ease;
-}
-
-.card:hover .cardIcon {
-  background: var(--sub-primary);
-  color: white;
-}
-
-.cardTitle {
   font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--sub-dark);
-  margin-bottom: 0.5rem;
-}
-
-.cardDescription {
-  font-size: 0.9rem;
   color: var(--sub-gray);
-  line-height: 1.5;
-}
-
-/* Tech Stack */
-.techSection {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 2rem 5rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.techTitle {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--sub-gray);
-  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
 }
 
 .techGrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .techTag {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.9rem;
   background: var(--sub-white);
   border: 1px solid rgba(67, 97, 238, 0.1);
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--sub-dark);
   transition: all 0.2s ease;
@@ -189,26 +73,22 @@
 
 .techTag:hover {
   border-color: var(--sub-primary-light);
-  box-shadow: 0 2px 10px rgba(67, 97, 238, 0.1);
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.08);
   transform: translateY(-1px);
 }
 
 .techTag i {
   color: var(--sub-primary);
+  font-size: 0.9rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .hero {
-    padding: 4rem 1.5rem 3rem;
+  .main {
+    padding: 2rem 1.5rem;
   }
 
-  .profileImageContainer {
-    width: 140px;
-    height: 140px;
-  }
-
-  .cardsGrid {
-    grid-template-columns: 1fr;
+  .profileImage {
+    width: 130px;
+    height: 130px;
   }
 }

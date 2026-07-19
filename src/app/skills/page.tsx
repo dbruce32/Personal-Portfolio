@@ -60,12 +60,12 @@ const skillCategories = [
 export default function SkillsPage() {
   return (
     <div className={styles.body}>
+      <Navbar />
+
       <header className={styles.header}>
         <h1 className={styles.title}>My Skills</h1>
         <p className={styles.tagline}>Skills in Software Engineering, Data Analysis, and Machine Learning</p>
       </header>
-
-      <Navbar />
 
       {skillCategories.map((category) => (
         <SkillCategory key={category.title} {...category} />

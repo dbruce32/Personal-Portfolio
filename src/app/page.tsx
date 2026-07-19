@@ -1,34 +1,7 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Navbar from '@/components/Navbar/Navbar';
 import ContourBackground from '@/components/ContourBackground/ContourBackground';
 import styles from './page.module.css';
-
-const cards = [
-  {
-    icon: 'fas fa-code',
-    title: 'Technical Skills',
-    description: 'Python, Java, React, machine learning frameworks, and more.',
-    href: '/skills',
-  },
-  {
-    icon: 'fas fa-rocket',
-    title: 'Projects',
-    description: 'ML models, web apps, and collaborative development work.',
-    href: '/projects',
-  },
-  {
-    icon: 'fas fa-briefcase',
-    title: 'Experience',
-    description: 'Teaching, research, and professional development at Georgia Tech.',
-    href: '/professional',
-  },
-  {
-    icon: 'fas fa-paper-plane',
-    title: 'Contact',
-    description: 'Open to opportunities, collaborations, and conversations.',
-    href: '/contact',
-  },
-];
 
 const techStack = [
   { icon: 'fab fa-python', name: 'Python' },
@@ -43,46 +16,28 @@ const techStack = [
 export default function Home() {
   return (
     <div className={styles.body}>
+      <Navbar />
       <ContourBackground />
 
-      {/* Hero */}
-      <section className={styles.hero}>
+      <main className={styles.main}>
         <div className={styles.profileImageContainer}>
           <Image
             src="/images/db.png"
             alt="Dylan Bruce"
-            width={180}
-            height={180}
+            width={160}
+            height={160}
             className={styles.profileImage}
             priority
           />
         </div>
 
-        <p className={styles.greeting}>Hey, I&apos;m</p>
         <h1 className={styles.name}>Dylan Bruce</h1>
         <p className={styles.tagline}>
-          CS student at Georgia Tech building things at the intersection of software engineering and data analysis.
+          Computer Science &amp; Mathematics at Georgia Tech.
+          <br />
+          Focused on software engineering and data analysis.
         </p>
-      </section>
 
-      {/* Navigation Cards */}
-      <section className={styles.cardsSection}>
-        <div className={styles.cardsGrid}>
-          {cards.map((card) => (
-            <Link key={card.href} href={card.href} className={styles.card}>
-              <div className={styles.cardIcon}>
-                <i className={card.icon}></i>
-              </div>
-              <h3 className={styles.cardTitle}>{card.title}</h3>
-              <p className={styles.cardDescription}>{card.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className={styles.techSection}>
-        <p className={styles.techTitle}>Technologies I Work With</p>
         <div className={styles.techGrid}>
           {techStack.map((tech) => (
             <span key={tech.name} className={styles.techTag}>
@@ -90,7 +45,7 @@ export default function Home() {
             </span>
           ))}
         </div>
-      </section>
+      </main>
     </div>
   );
 }

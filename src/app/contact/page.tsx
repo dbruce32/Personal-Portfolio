@@ -34,12 +34,12 @@ const contactCards = [
 export default function ContactPage() {
   return (
     <div className={styles.body}>
+      <Navbar />
+
       <header className={styles.header}>
         <h1 className={styles.title}>Hire me!!</h1>
         <p className={styles.tagline}>Please reach out! I&apos;d love to hear from you.</p>
       </header>
-
-      <Navbar />
 
       <div className={styles.contactContainer}>
         <div className={styles.contactGrid}>
