@@ -14,8 +14,10 @@ interface BouncyPhotoProps {
 export default function BouncyPhoto({ src, alt, size, className }: BouncyPhotoProps) {
   const [active, setActive] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState(0);
   const velRef = useRef({ x: 0, y: 0 });
   const posRef = useRef({ x: 0, y: 0 });
+  const rotRef = useRef(0);
   const dragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const lastMouse = useRef({ x: 0, y: 0, t: 0 });
@@ -52,6 +54,9 @@ export default function BouncyPhoto({ src, alt, size, className }: BouncyPhotoPr
       p.x += vel.x;
       p.y += vel.y;
 
+      // Rotation based on horizontal velocity
+      rotRef.current += vel.x * 0.8;
+
       const maxX = window.innerWidth - size;
       const maxY = window.innerHeight - size;
 
@@ -75,6 +80,7 @@ export default function BouncyPhoto({ src, alt, size, className }: BouncyPhotoPr
     }
 
     setPos({ x: p.x, y: p.y });
+    setRotation(rotRef.current);
     rafRef.current = requestAnimationFrame(physicsLoop);
   }, [active, size]);
 
@@ -180,7 +186,7 @@ export default function BouncyPhoto({ src, alt, size, className }: BouncyPhotoPr
       {/* Floating bouncy photo */}
       <div
         className={styles.bouncy}
-        style={{ left: pos.x, top: pos.y, width: size, height: size }}
+        style={{ left: pos.x, top: pos.y, width: size, height: size, transform: `rotate(${rotation}deg)` }}
         onMouseDown={onGrab}
         onTouchStart={onTouchGrab}
       >
