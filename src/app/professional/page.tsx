@@ -1,12 +1,10 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import FadeInOnScroll from '@/components/FadeInOnScroll/FadeInOnScroll';
 import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
-
-export const metadata: Metadata = {
-  title: 'Dylan Bruce - Professional',
-};
 
 const experiences = [
   {
@@ -119,7 +117,12 @@ export default function ProfessionalPage() {
             </div>
             <p className={styles.eduSchool}>Brookwood High School</p>
             <p className={styles.eduDetail}>
-              Microsoft Technology Associate (MTA) · AP Scholar with Distinction
+              GPA: 4.56 <br />
+              Rank 8/867 <br />
+              National Merit Scholar <br />
+              Microsoft Technology Associate (MTA) <br />
+              AP Scholar with Distinction <br />
+              ...
             </p>
           </div>
         </section>
@@ -129,24 +132,26 @@ export default function ProfessionalPage() {
           <h2 className={styles.sectionTitle}>Experience</h2>
 
           <div className={styles.expList}>
-            {experiences.map((exp) => (
-              <div key={exp.title + exp.date} className={styles.expItem}>
-                <div className={styles.expDot}></div>
-                <div className={styles.expContent}>
-                  <div className={styles.expHeader}>
-                    <h3 className={styles.expTitle}>{exp.title}</h3>
-                    <span className={styles.expDate}>{exp.date}</span>
+            {experiences.map((exp, index) => (
+              <FadeInOnScroll key={exp.title + exp.date} delay={index * 80}>
+                <div className={styles.expItem}>
+                  <div className={styles.expDot}></div>
+                  <div className={styles.expContent}>
+                    <div className={styles.expHeader}>
+                      <h3 className={styles.expTitle}>{exp.title}</h3>
+                      <span className={styles.expDate}>{exp.date}</span>
+                    </div>
+                    <div className={styles.expMeta}>
+                      {exp.logo && (
+                        <img src={getAssetPath(exp.logo)} alt={exp.org} className={styles.expLogo} />
+                      )}
+                      <p className={styles.expOrg}>{exp.org}</p>
+                      <span className={styles.expLocation}>{exp.location}</span>
+                    </div>
+                    <p className={styles.expDesc}>{exp.description}</p>
                   </div>
-                  <div className={styles.expMeta}>
-                    {exp.logo && (
-                      <img src={getAssetPath(exp.logo)} alt={exp.org} className={styles.expLogo} />
-                    )}
-                    <p className={styles.expOrg}>{exp.org}</p>
-                    <span className={styles.expLocation}>{exp.location}</span>
-                  </div>
-                  <p className={styles.expDesc}>{exp.description}</p>
                 </div>
-              </div>
+              </FadeInOnScroll>
             ))}
           </div>
         </section>

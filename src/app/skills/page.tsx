@@ -1,11 +1,9 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import FadeInOnScroll from '@/components/FadeInOnScroll/FadeInOnScroll';
 import styles from './page.module.css';
-
-export const metadata: Metadata = {
-  title: 'Dylan Bruce - Skills',
-};
 
 const skillCategories = [
   {
@@ -82,18 +80,20 @@ export default function SkillsPage() {
           </p>
         </section>
 
-        {skillCategories.map((category) => (
-          <section key={category.title} className={styles.category}>
-            <h2 className={styles.categoryTitle}>{category.title}</h2>
-            <div className={styles.skillsGrid}>
-              {category.skills.map((skill) => (
-                <span key={skill.name} className={styles.skill}>
-                  <i className={`${skill.icon} ${styles.skillIcon}`}></i>
-                  {skill.name}
-                </span>
-              ))}
-            </div>
-          </section>
+        {skillCategories.map((category, index) => (
+          <FadeInOnScroll key={category.title} delay={index * 100}>
+            <section className={styles.category}>
+              <h2 className={styles.categoryTitle}>{category.title}</h2>
+              <div className={styles.skillsGrid}>
+                {category.skills.map((skill) => (
+                  <span key={skill.name} className={styles.skill}>
+                    <i className={`${skill.icon} ${styles.skillIcon}`}></i>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </section>
+          </FadeInOnScroll>
         ))}
       </div>
 
