@@ -3,6 +3,7 @@ import ContourBackground from '@/components/ContourBackground/ContourBackground'
 import LiveClock from '@/components/LiveClock/LiveClock';
 import Magnetic from '@/components/Magnetic/Magnetic';
 import BouncyPhoto from '@/components/BouncyPhoto/BouncyPhoto';
+import Footer from '@/components/Footer/Footer';
 import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
@@ -38,8 +39,6 @@ export default function Home() {
 
         <p className={styles.tagline}>
           Computer Science &amp; Mathematics at Georgia Tech.
-          <br />
-          Focused on software engineering and data analysis.
         </p>
 
         <div className={styles.techGrid}>
@@ -52,8 +51,16 @@ export default function Home() {
           ))}
         </div>
 
+        <div className={styles.currently}>
+          <h2 className={styles.currentlyTitle}>Currently</h2>
+          <ul className={styles.currentlyList}>
+            <li>Building operational dashboards at Walmart Global Tech</li>
+          </ul>
+        </div>
+
         <LiveClock />
       </main>
+      <Footer />
     </div>
   );
 }

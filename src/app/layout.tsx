@@ -9,10 +9,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://dbruce32.github.io/Personal-Portfolio'),
   title: 'DYLAN BRUCE',
   description: 'Georgia Tech Computer Science student specializing in Intelligence and Information Internetworks.',
   icons: {
     icon: '/images/db-logo.png',
+  },
+  openGraph: {
+    title: 'DYLAN BRUCE',
+    description: 'Georgia Tech Computer Science student specializing in Intelligence and Information Internetworks.',
+    url: 'https://dbruce32.github.io/Personal-Portfolio',
+    siteName: 'DYLAN BRUCE',
+    images: ['/images/db-logo.png'],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DYLAN BRUCE',
+    description: 'Georgia Tech Computer Science student specializing in Intelligence and Information Internetworks.',
+    images: ['/images/db-logo.png'],
   },
 };
 

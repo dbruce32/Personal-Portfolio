@@ -7,11 +7,3 @@
   z-index: 0;
   pointer-events: none;
 }
-
-.line {
-  transition: d 0.15s ease-out;
-}
-
-.node {
-  transition: cx 0.15s ease-out, cy 0.15s ease-out;
-}

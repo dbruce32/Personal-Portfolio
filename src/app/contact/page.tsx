@@ -71,7 +71,7 @@ export default function ContactPage() {
               <span className={styles.dot} data-color="green"></span>
               <span className={styles.terminalTitle}>dylan@portfolio ~ contact</span>
             </div>
-            <div className={styles.terminalBody}>
+            <div className={styles.terminalBody} role="log" aria-live="polite" aria-label="Terminal output">
               {history.map((entry, i) => (
                 <div key={i} className={styles.historyEntry}>
                   {entry.input && (
@@ -90,7 +90,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               ))}
-              <form onSubmit={handleSubmit} className={styles.inputForm}>
+              <form onSubmit={handleSubmit} className={styles.inputForm} aria-label="Terminal command input">
                 <span className={styles.prompt}>$</span>
                 <input
                   type="text"

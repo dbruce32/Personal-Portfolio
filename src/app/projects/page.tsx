@@ -1,11 +1,9 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import FadeInOnScroll from '@/components/FadeInOnScroll/FadeInOnScroll';
 import styles from './page.module.css';
-
-export const metadata: Metadata = {
-  title: 'Dylan Bruce - Projects',
-};
 
 const projects = [
   {
@@ -62,34 +60,36 @@ export default function ProjectsPage() {
         </section>
 
         <div className={styles.projectList}>
-          {projects.map((project) => (
-            <article key={project.title} className={styles.project}>
-              <div className={styles.projectHeader}>
-                <h2 className={styles.projectTitle}>{project.title}</h2>
-                {project.links.length > 0 && (
-                  <div className={styles.projectLinks}>
-                    {project.links.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.projectLink}
-                        aria-label={link.label}
-                      >
-                        <i className={link.icon}></i>
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <p className={styles.projectDesc}>{project.description}</p>
-              <div className={styles.tags}>
-                {project.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>{tag}</span>
-                ))}
-              </div>
-            </article>
+          {projects.map((project, index) => (
+            <FadeInOnScroll key={project.title} delay={index * 100}>
+              <article className={styles.project}>
+                <div className={styles.projectHeader}>
+                  <h2 className={styles.projectTitle}>{project.title}</h2>
+                  {project.links.length > 0 && (
+                    <div className={styles.projectLinks}>
+                      {project.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.projectLink}
+                          aria-label={link.label}
+                        >
+                          <i className={link.icon}></i>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <p className={styles.projectDesc}>{project.description}</p>
+                <div className={styles.tags}>
+                  {project.tags.map((tag) => (
+                    <span key={tag} className={styles.tag}>{tag}</span>
+                  ))}
+                </div>
+              </article>
+            </FadeInOnScroll>
           ))}
         </div>
       </div>
