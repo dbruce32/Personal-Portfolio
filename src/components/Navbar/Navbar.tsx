@@ -21,7 +21,7 @@ export default function Navbar() {
         <Link href="/" className={styles.logo}>
           DB
         </Link>
-        <nav className={styles.links}>
+        <nav className={styles.links} aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
