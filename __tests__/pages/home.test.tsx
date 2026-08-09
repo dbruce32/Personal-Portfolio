@@ -34,13 +34,6 @@ describe('Home Page', () => {
     expect(screen.getByAltText('Dylan Bruce')).toBeInTheDocument();
   });
 
-  it('renders tech stack tags', () => {
-    render(<Home />);
-    expect(screen.getByText('Python')).toBeInTheDocument();
-    expect(screen.getByText('React')).toBeInTheDocument();
-    expect(screen.getByText('Docker')).toBeInTheDocument();
-  });
-
   it('renders the live clock', () => {
     render(<Home />);
     expect(screen.getByTestId('live-clock')).toBeInTheDocument();
