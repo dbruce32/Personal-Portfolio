@@ -155,8 +155,16 @@
 
 .expItem {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   padding-left: 1rem;
+}
+
+.expDivider {
+  border: none;
+  height: 1px;
+  background: rgba(67, 97, 238, 0.18);
+  margin: 1.5rem 1rem 1.5rem;
+  width: 50%;
 }
 
 .expItem:last-child {

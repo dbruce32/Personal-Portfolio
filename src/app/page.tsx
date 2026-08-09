@@ -7,16 +7,6 @@ import Footer from '@/components/Footer/Footer';
 import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
-const techStack = [
-  { icon: 'fab fa-python', name: 'Python' },
-  { icon: 'fab fa-java', name: 'Java' },
-  { icon: 'fab fa-js-square', name: 'JavaScript' },
-  { icon: 'fab fa-react', name: 'React' },
-  { icon: 'fas fa-database', name: 'SQL' },
-  { icon: 'fab fa-git-alt', name: 'Git' },
-  { icon: 'fab fa-docker', name: 'Docker' },
-];
-
 export default function Home() {
   return (
     <div className={styles.body}>
@@ -40,16 +30,6 @@ export default function Home() {
         <p className={styles.tagline}>
           Computer Science &amp; Mathematics at Georgia Tech.
         </p>
-
-        <div className={styles.techGrid}>
-          {techStack.map((tech) => (
-            <Magnetic key={tech.name} strength={0.4}>
-              <span className={styles.techTag}>
-                <i className={tech.icon}></i> {tech.name}
-              </span>
-            </Magnetic>
-          ))}
-        </div>
 
         <div className={styles.currently}>
           <h2 className={styles.currentlyTitle}>Currently</h2>
