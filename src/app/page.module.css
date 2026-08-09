@@ -50,38 +50,6 @@
   margin-bottom: 2.5rem;
 }
 
-.techGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-}
-
-.techTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.9rem;
-  background: var(--sub-white);
-  border: 1px solid rgba(67, 97, 238, 0.1);
-  border-radius: 50px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--sub-dark);
-  transition: all 0.2s ease;
-}
-
-.techTag:hover {
-  border-color: var(--sub-primary-light);
-  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.08);
-  transform: translateY(-1px);
-}
-
-.techTag i {
-  color: var(--sub-primary);
-  font-size: 0.9rem;
-}
-
 .currently {
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;

@@ -151,6 +151,7 @@ export default function ProfessionalPage() {
                     <p className={styles.expDesc}>{exp.description}</p>
                   </div>
                 </div>
+                {index < experiences.length - 1 && <hr className={styles.expDivider} />}
               </FadeInOnScroll>
             ))}
           </div>
