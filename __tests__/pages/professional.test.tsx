@@ -24,6 +24,13 @@ describe('Professional Page', () => {
     expect(screen.getByText('Georgia Institute of Technology')).toBeInTheDocument();
   });
 
+  it('renders awards and activities', () => {
+    render(<ProfessionalPage />);
+    expect(screen.getByText('Awards & Activities')).toBeInTheDocument();
+    expect(screen.getByText('National Merit Scholar')).toBeInTheDocument();
+    expect(screen.getByText('WebDev @ GT')).toBeInTheDocument();
+  });
+
   it('renders experience items', () => {
     render(<ProfessionalPage />);
     expect(screen.getByText('Software Engineer II Intern')).toBeInTheDocument();

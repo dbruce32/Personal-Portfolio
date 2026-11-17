@@ -6,6 +6,19 @@ import FadeInOnScroll from '@/components/FadeInOnScroll/FadeInOnScroll';
 import { getAssetPath } from '@/lib/basePath';
 import styles from './page.module.css';
 
+const awards = [
+  { name: 'National Merit Scholar', detail: 'National Merit Scholarship Program' },
+  { name: 'AP Scholar with Distinction', detail: 'College Board' },
+  { name: 'Microsoft Technology Associate (MTA)', detail: 'Microsoft certification' },
+];
+
+const activities: { name: string; detail?: string }[] = [
+  { name: 'Big Data Big Impact @ GT', detail: 'Student data science organization' },
+  { name: 'WebDev @ GT', detail: 'Built News2Lang, an AI language-learning platform' },
+  { name: 'Bouldering' },
+  { name: 'Table Tennis' },
+];
+
 const experiences = [
   {
     date: 'May 2026 – Aug 2026',
@@ -32,7 +45,7 @@ const experiences = [
     location: 'Atlanta, GA',
     logo: '/images/yellow-jacket.svg',
     description:
-      'Increased InceptionV4 CNN accuracy by ~10% through enhanced preprocessing and normalization for plankton image classification. Developing advanced preprocessing pipelines for underwater imagery.',
+      'Improved InceptionV4 CNN accuracy from 50% to 82% for plankton classification across 4,000+ images and 50 species by enhancing preprocessing and normalization pipelines for underwater imagery.',
   },
   {
     date: 'Aug 2025 – Present',
@@ -106,6 +119,7 @@ export default function ProfessionalPage() {
             </div>
             <p className={styles.eduSchool}>Georgia Institute of Technology</p>
             <p className={styles.eduDetail}>
+              GPA: 3.92/4.00 <br />
               Threads: Intelligence &amp; Information Internetworks. Coursework includes Machine Learning, AI, Algorithms, Systems &amp; Networks, Combinatorics, and Probability.
             </p>
           </div>
@@ -118,12 +132,41 @@ export default function ProfessionalPage() {
             <p className={styles.eduSchool}>Brookwood High School</p>
             <p className={styles.eduDetail}>
               GPA: 4.56 <br />
-              Rank 8/867 <br />
-              National Merit Scholar <br />
-              Microsoft Technology Associate (MTA) <br />
-              AP Scholar with Distinction <br />
-              ...
+              Rank 8/867
             </p>
+          </div>
+        </section>
+
+        {/* Awards & Activities */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Awards &amp; Activities</h2>
+          <div className={styles.awardsGrid}>
+            <div>
+              <h3 className={styles.awardsHeading}>
+                <i className="fas fa-trophy"></i> Awards
+              </h3>
+              <ul className={styles.awardsList}>
+                {awards.map((a) => (
+                  <li key={a.name} className={styles.awardItem}>
+                    <span className={styles.awardName}>{a.name}</span>
+                    <span className={styles.awardDetail}>{a.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className={styles.awardsHeading}>
+                <i className="fas fa-users"></i> Activities
+              </h3>
+              <ul className={styles.awardsList}>
+                {activities.map((a) => (
+                  <li key={a.name} className={styles.awardItem}>
+                    <span className={styles.awardName}>{a.name}</span>
+                    {a.detail && <span className={styles.awardDetail}>{a.detail}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 

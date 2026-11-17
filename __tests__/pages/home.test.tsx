@@ -29,6 +29,11 @@ describe('Home Page', () => {
     expect(screen.getByText(/Computer Science/)).toBeInTheDocument();
   });
 
+  it('renders the graduation date', () => {
+    render(<Home />);
+    expect(screen.getByText(/May 2027/)).toBeInTheDocument();
+  });
+
   it('renders the profile image', () => {
     render(<Home />);
     expect(screen.getByAltText('Dylan Bruce')).toBeInTheDocument();

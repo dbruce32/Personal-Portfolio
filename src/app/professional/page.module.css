@@ -136,6 +136,54 @@
   line-height: 1.6;
 }
 
+/* Awards & Activities */
+.awardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
+}
+
+.awardsHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sub-dark);
+  margin-bottom: 0.75rem;
+}
+
+.awardsHeading i {
+  color: var(--sub-primary-light);
+  font-size: 0.85rem;
+}
+
+.awardsList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.awardItem {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.85rem;
+  border-left: 2px solid rgba(67, 97, 238, 0.15);
+}
+
+.awardName {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--sub-dark);
+}
+
+.awardDetail {
+  font-size: 0.82rem;
+  color: var(--sub-gray);
+}
+
 /* Experience */
 .expList {
   position: relative;
@@ -251,6 +299,10 @@
 
   .title {
     font-size: 2rem;
+  }
+
+  .awardsGrid {
+    grid-template-columns: 1fr;
   }
 
   .eduHeader,

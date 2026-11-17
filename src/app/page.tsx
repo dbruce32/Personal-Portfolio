@@ -34,7 +34,7 @@ export default function Home() {
         <div className={styles.currently}>
           <h2 className={styles.currentlyTitle}>Currently</h2>
           <ul className={styles.currentlyList}>
-            <li>Building operational dashboards at Walmart Global Tech</li>
+            <li>Graduating with my B.S. in May 2027</li>
           </ul>
         </div>
 

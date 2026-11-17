@@ -19,6 +19,14 @@ describe('Skills Page', () => {
     expect(screen.getByText('DevOps & Tools')).toBeInTheDocument();
     expect(screen.getByText('Databases & Cloud')).toBeInTheDocument();
     expect(screen.getByText('Machine Learning')).toBeInTheDocument();
+    expect(screen.getByText('Generative AI')).toBeInTheDocument();
+  });
+
+  it('renders skills added from the resume', () => {
+    render(<SkillsPage />);
+    expect(screen.getByText('PyTorch')).toBeInTheDocument();
+    expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
+    expect(screen.getByText('GitHub Actions')).toBeInTheDocument();
   });
 
   it('renders individual skills', () => {

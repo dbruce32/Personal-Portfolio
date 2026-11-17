@@ -26,6 +26,8 @@ const skillCategories = [
       { name: 'React.js', icon: 'fa-brands fa-react' },
       { name: 'Next.js', icon: 'fas fa-n' },
       { name: 'Tailwind CSS', icon: 'fas fa-paintbrush' },
+      { name: 'Redux', icon: 'fas fa-arrows-spin' },
+      { name: 'Node.js', icon: 'fab fa-node-js' },
       { name: 'Spring Boot', icon: 'fas fa-leaf' },
       { name: 'Android Studio', icon: 'fab fa-android' },
     ],
@@ -33,6 +35,7 @@ const skillCategories = [
   {
     title: 'Machine Learning',
     skills: [
+      { name: 'PyTorch', icon: 'fas fa-fire-flame-curved' },
       { name: 'TensorFlow', icon: 'fas fa-brain' },
       { name: 'Keras', icon: 'fas fa-network-wired' },
       { name: 'scikit-learn', icon: 'fas fa-cogs' },
@@ -44,8 +47,18 @@ const skillCategories = [
     ],
   },
   {
+    title: 'Generative AI',
+    skills: [
+      { name: 'LLM APIs', icon: 'fas fa-robot' },
+      { name: 'Agentic Workflows', icon: 'fas fa-diagram-project' },
+      { name: 'Prompt Engineering', icon: 'fas fa-terminal' },
+    ],
+  },
+  {
     title: 'Databases & Cloud',
     skills: [
+      { name: 'PostgreSQL', icon: 'fas fa-database' },
+      { name: 'AWS', icon: 'fab fa-aws' },
       { name: 'Firebase', icon: 'fas fa-fire' },
       { name: 'Azure CosmosDB', icon: 'fab fa-microsoft' },
       { name: 'Supabase', icon: 'fas fa-server' },
@@ -59,6 +72,10 @@ const skillCategories = [
       { name: 'Kubernetes', icon: 'fas fa-dharmachakra' },
       { name: 'Maven', icon: 'fas fa-cubes' },
       { name: 'Jenkins CI/CD', icon: 'fas fa-infinity' },
+      { name: 'GitHub Actions', icon: 'fab fa-github' },
+      { name: 'Prometheus', icon: 'fas fa-gauge-high' },
+      { name: 'SonarQube', icon: 'fas fa-magnifying-glass-chart' },
+      { name: 'Jest / Vitest', icon: 'fas fa-vial' },
       { name: 'Apache Airflow', icon: 'fas fa-wind' },
       { name: 'CMake', icon: 'fas fa-hammer' },
       { name: 'LaTeX', icon: 'fas fa-file-alt' },
