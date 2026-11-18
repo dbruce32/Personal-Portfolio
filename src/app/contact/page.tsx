@@ -1,13 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Navbar from '@/components/Navbar/Navbar';
+import LiveClock from '@/components/LiveClock/LiveClock';
 import styles from './page.module.css';
 
 const contacts = [
-  { command: 'email', label: 'dylanbruce.cs@gmail.com', href: 'mailto:dylanbruce.cs@gmail.com', icon: 'fas fa-envelope' },
-  { command: 'linkedin', label: 'linkedin.com/in/dylangbruce', href: 'https://www.linkedin.com/in/dylangbruce', icon: 'fab fa-linkedin' },
-  { command: 'github', label: 'github.com/dbruce32', href: 'https://github.com/dbruce32', icon: 'fab fa-github' },
+  { command: 'email', kind: 'Email', label: 'dylanbruce.cs@gmail.com', icon: 'fas fa-envelope', href: 'mailto:dylanbruce.cs@gmail.com' },
+  { command: 'linkedin', kind: 'LinkedIn', label: 'dylangbruce', icon: 'fab fa-linkedin', href: 'https://www.linkedin.com/in/dylangbruce' },
+  { command: 'github', kind: 'GitHub', label: 'dbruce32', icon: 'fab fa-github', href: 'https://github.com/dbruce32' },
 ];
 
 const responses: Record<string, string> = {
@@ -18,6 +19,8 @@ const responses: Record<string, string> = {
   github: '→ github.com/dbruce32',
 };
 
+const WELCOME = 'Type "help" to see available commands.';
+
 interface HistoryEntry {
   input: string;
   output: string;
@@ -26,16 +29,24 @@ interface HistoryEntry {
 
 export default function ContactPage() {
   const [input, setInput] = useState('');
-  const [history, setHistory] = useState<HistoryEntry[]>([
-    { input: '', output: 'Type "help" to see available commands.' },
-  ]);
+  const [history, setHistory] = useState<HistoryEntry[]>([{ input: '', output: WELCOME }]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Focus the terminal on load like before, but only with a mouse/trackpad,
+  // so phones don't scroll down and pop open the keyboard.
+  useEffect(() => {
+    if (typeof window.matchMedia === 'function' && window.matchMedia('(pointer: fine)').matches) {
+      inputRef.current?.focus({ preventScroll: true });
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const cmd = input.trim().toLowerCase();
+    if (!cmd) return;
 
     if (cmd === 'clear') {
-      setHistory([{ input: '', output: 'Type "help" to see available commands.' }]);
+      setHistory([{ input: '', output: WELCOME }]);
       setInput('');
       return;
     }
@@ -59,11 +70,43 @@ export default function ContactPage() {
       <div className={styles.content}>
         <section className={styles.intro}>
           <h1 className={styles.title}>Contact</h1>
-          <p className={styles.subtitle}>Let&apos;s connect. Use the terminal below or the links on the side.</p>
+          <p className={styles.lede}>
+            Happy to talk about roles, research, or anything on this site. Email is the quickest way to reach me.
+          </p>
         </section>
 
-        <div className={styles.layout}>
-          {/* Terminal */}
+        {/* Channels: a ruled list set in large type */}
+        <section aria-label="Contact channels">
+          <ul className={styles.channels}>
+            {contacts.map((c) => (
+              <li key={c.command}>
+                <a
+                  href={c.href}
+                  target={c.command === 'email' ? '_self' : '_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.channel}
+                >
+                  <span className={styles.channelKind}>{c.kind}</span>
+                  <span className={styles.channelValue}>
+                    <i className={`${c.icon} ${styles.channelIcon}`} aria-hidden="true"></i>
+                    <span className={styles.channelLabel}>{c.label}</span>
+                  </span>
+                  <span className={styles.channelArrow} aria-hidden="true">
+                    {c.command === 'email' ? '→' : '↗'}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.local}>
+            <span className={styles.localLabel}>Local time</span>
+            <LiveClock />
+          </div>
+        </section>
+
+        {/* Command line: the macOS-style terminal window */}
+        <section className={styles.shell} aria-labelledby="shell-title">
+          <h2 id="shell-title" className={styles.shellTitle}>Prefer the command line?</h2>
           <div className={styles.terminal}>
             <div className={styles.terminalHeader}>
               <span className={styles.dot} data-color="red"></span>
@@ -93,34 +136,20 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className={styles.inputForm} aria-label="Terminal command input">
                 <span className={styles.prompt}>$</span>
                 <input
+                  ref={inputRef}
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   className={styles.inputField}
-                  autoFocus
                   spellCheck={false}
+                  autoCapitalize="off"
+                  autoComplete="off"
                   aria-label="Terminal input"
                 />
               </form>
             </div>
           </div>
-
-          {/* Quick links sidebar */}
-          <aside className={styles.sidebar}>
-            {contacts.map((c) => (
-              <a
-                key={c.command}
-                href={c.href}
-                target={c.command === 'email' ? '_self' : '_blank'}
-                rel="noopener noreferrer"
-                className={styles.quickLink}
-              >
-                <i className={`${c.icon} ${styles.quickIcon}`}></i>
-                <span className={styles.quickLabel}>{c.label}</span>
-              </a>
-            ))}
-          </aside>
-        </div>
+        </section>
       </div>
     </div>
   );

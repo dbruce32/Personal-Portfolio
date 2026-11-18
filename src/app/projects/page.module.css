@@ -6,14 +6,26 @@
 }
 
 .content {
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 3rem 2rem 2rem;
+  padding: 3rem 2rem 4rem;
 }
 
-/* Intro */
+/* Layout: entries stay centered; the section index sits in the right gutter */
+.layout {
+  display: grid;
+  /* Equal side columns keep the entries centered; each is wide enough for the sidebar */
+  grid-template-columns: minmax(200px, 1fr) minmax(0, 1000px) minmax(200px, 1fr);
+  align-items: start;
+}
+
 .intro {
-  margin-bottom: 2.5rem;
+  grid-column: 2;
+  margin-bottom: 3rem;
+}
+
+.main {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
 }
 
 .title {
@@ -31,104 +43,290 @@
   color: var(--sub-gray);
 }
 
-/* Project List */
-.projectList {
+/* Section sidebar column (the index itself is the shared SectionNav component) */
+.sidebar {
+  grid-column: 3;
+  grid-row: 2;
+  position: sticky;
+  top: 96px;
+  width: 100%;
+  max-width: 200px;
+  padding-left: 2.5rem;
+}
+
+/* Sections: title over a dark rule */
+.section,
+.sectionFirst {
+  scroll-margin-top: 96px;
+}
+
+.section {
+  margin-top: 4rem;
+}
+
+.sectionHead {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--sub-dark);
 }
 
-/* Individual Project Card */
-.project {
-  background: var(--sub-white);
-  border-radius: 16px;
-  padding: 1.75rem 2rem;
-  border: 1px solid rgba(67, 97, 238, 0.06);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
-  transition: all 0.25s ease;
-}
-
-.project:hover {
-  box-shadow: 0 6px 24px rgba(67, 97, 238, 0.08);
-  border-color: rgba(67, 97, 238, 0.12);
-  transform: translateY(-2px);
-}
-
-.projectHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.6rem;
-}
-
-.projectTitle {
-  font-size: 1.2rem;
-  font-weight: 700;
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--sub-dark);
 }
 
-.projectLinks {
-  display: flex;
-  gap: 0.4rem;
+/* Entries: two columns, each entry hugs its own content, divided by hairlines */
+.entries {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+  align-items: start;
 }
 
-.projectLink {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--sub-gray);
-  font-size: 1rem;
-  transition: all 0.2s ease;
+.entry {
+  padding: 1.6rem 0 2rem;
+  border-bottom: 1px solid rgba(20, 33, 61, 0.12);
 }
 
-.projectLink:hover {
+.entryMeta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--sub-primary);
-  background: rgba(67, 97, 238, 0.08);
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
 }
 
-.projectDesc {
-  font-size: 0.92rem;
-  color: var(--sub-gray);
+.entryTitle {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--sub-dark);
+  margin-bottom: 0.9rem;
+}
+
+.entryDesc {
+  font-size: 0.95rem;
+  color: var(--sub-dark);
   line-height: 1.7;
   margin-bottom: 1rem;
 }
 
+/* Media: hard offset shadow, no blur, URL as a caption */
+.media {
+  margin: 0.2rem 6px 1.4rem 0;
+}
+
+.video,
+.preview {
+  display: block;
+  position: relative;
+  border: 1px solid var(--sub-dark);
+  box-shadow: 6px 6px 0 rgba(67, 97, 238, 0.28);
+  background: #000;
+  overflow: hidden;
+}
+
+.video {
+  aspect-ratio: 16 / 9;
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.preview {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.preview:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 rgba(67, 97, 238, 0.45);
+}
+
+.previewImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+}
+
+.caption {
+  margin-top: 0.7rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  color: var(--sub-gray);
+}
+
+.caption::before {
+  content: '↳ ';
+  color: var(--sub-primary);
+}
+
+/* Highlights */
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.highlights li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.9rem;
+  color: var(--sub-gray);
+  line-height: 1.6;
+}
+
+.highlights li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--sub-primary);
+}
+
+/* My role: an indented note set off by a single rule */
+.role {
+  margin: 0 0 1.1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--sub-primary);
+  font-size: 0.9rem;
+  color: var(--sub-dark);
+  line-height: 1.65;
+}
+
+.roleLabel {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sub-primary);
+  margin-bottom: 0.1rem;
+}
+
+/* Footer of an entry: tech as slash-separated text, then text links */
+.entryFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
 .tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--sub-gray);
 }
 
-.tag {
-  padding: 0.28rem 0.7rem;
-  background: rgba(67, 97, 238, 0.06);
-  color: var(--sub-primary-dark);
-  border-radius: 6px;
-  font-size: 0.78rem;
+.tags li:not(:last-child)::after {
+  content: '/';
+  margin: 0 0.5em;
+  opacity: 0.5;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.textLink {
+  font-size: 0.88rem;
   font-weight: 600;
+  color: var(--sub-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  text-decoration-color: rgba(67, 97, 238, 0.35);
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
 }
 
-/* Responsive */
+.textLink:hover {
+  color: var(--sub-primary-dark);
+  text-decoration-color: currentColor;
+}
+
+/* Too narrow for a right gutter: the index becomes a sticky tab row under the title */
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1000px);
+    justify-content: center;
+  }
+
+  .intro,
+  .main,
+  .sidebar {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .intro {
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar {
+    top: var(--nav-h); /* sits flush under the navbar */
+    z-index: 50;
+    max-width: none;
+    width: auto;
+    margin: 0 -2rem 2rem;
+    padding: 0 2rem;
+    background: rgba(245, 247, 250, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(20, 33, 61, 0.12);
+  }
+
+  .section,
+  .sectionFirst {
+    scroll-margin-top: 120px;
+  }
+}
+
+/* Phone: one entry per row */
 @media (max-width: 768px) {
   .content {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem 3rem;
   }
 
   .title {
     font-size: 2rem;
   }
 
-  .project {
-    padding: 1.5rem;
+  .sidebar {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  .projectHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+  .entries {
+    grid-template-columns: 1fr;
+  }
+
+  .entryTitle {
+    font-size: 1.2rem;
   }
 }

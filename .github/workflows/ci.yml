@@ -1,27 +1,90 @@
 name: CI
 
+# Runs on every pull request into main, and is reused by deploy.yml so main is
+# checked exactly the same way before anything goes live.
 on:
   pull_request:
     branches: [main]
+  workflow_call:
 
+permissions:
+  contents: read
+
+# A new push to a PR cancels that PR's older run. Runs on main (via deploy) are never cancelled.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
+# Lint, test and build run in parallel, so one failure never hides another.
 jobs:
-  lint-test-build:
+  lint:
+    name: Lint & typecheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version-file: .nvmrc
+          cache: npm
 
       - run: npm ci
 
-      - name: Lint
+      - name: ESLint
         run: npm run lint
 
-      - name: Test
+      - name: TypeScript
+        run: npx tsc --noEmit
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Jest
         run: npm run test:ci
 
-      - name: Build
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Static export
         run: npm run build
+
+      # The exported site, downloadable from the run page for review, and reused by deploy.yml.
+      - name: Upload site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out/
+          retention-days: 7
+          if-no-files-found: error

@@ -32,9 +32,29 @@
   --sub-light-gray: #e9ecef;
   --sub-white: #ffffff;
   --sub-bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+
+  /* Navbar height, shared so sticky elements can sit flush beneath it */
+  --nav-h: 60px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 52px;
+  }
+}
+
+/*
+ * Overscroll: stop the rubber-band bounce so the navbar and the Voronoi
+ * background never pull away from the page edges, and paint the root in the
+ * page's own color for browsers that still bounce (so no white shows through).
+ */
+html {
+  background-color: #f5f7fa;
+  overscroll-behavior-y: none;
 }
 
 body {
+  overscroll-behavior-y: none;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

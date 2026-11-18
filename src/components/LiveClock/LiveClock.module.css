@@ -1,37 +1,44 @@
+/* A plain monospace readout on a hairline, no pill */
 .clock {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-top: 2.5rem;
-  padding: 0.6rem 1.2rem;
-  background: var(--sub-white);
-  border: 1px solid rgba(67, 97, 238, 0.1);
-  border-radius: 50px;
-  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  padding-top: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  align-self: center;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: #34d399;
+  background: #22c55e;
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
 }
 
 .time {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--sub-dark);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
 .label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--sub-gray);
-  font-weight: 500;
 }
