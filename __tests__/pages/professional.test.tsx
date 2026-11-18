@@ -47,7 +47,8 @@ describe('Professional Page', () => {
     const industry = within(screen.getByRole('region', { name: 'Industry' })).getAllByRole('listitem');
     expect(industry).toHaveLength(2);
     expect(industry[0]).toHaveTextContent('Walmart Global Tech');
-    expect(industry[0]).toHaveTextContent('May 2026 – Aug 2026');
+    // Accept a hyphen or an en dash between dates so a punctuation tweak can't break the test
+    expect(industry[0]).toHaveTextContent(/May 2026\s*[-–]\s*Aug 2026/);
     expect(industry[1]).toHaveTextContent('MathWorks');
 
     const academic = within(screen.getByRole('region', { name: 'Research & Teaching' })).getAllByRole('listitem');
