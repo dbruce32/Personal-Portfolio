@@ -43,4 +43,10 @@ describe('Home Page', () => {
     render(<Home />);
     expect(screen.getByTestId('live-clock')).toBeInTheDocument();
   });
+
+  it('renders the currently list', () => {
+    render(<Home />);
+    const currently = screen.getByRole('region', { name: 'Currently' });
+    expect(currently).toHaveTextContent('Graduating with my B.S. in May 2027');
+  });
 });

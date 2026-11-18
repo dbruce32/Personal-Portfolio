@@ -2,87 +2,85 @@
 
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
-import FadeInOnScroll from '@/components/FadeInOnScroll/FadeInOnScroll';
 import styles from './page.module.css';
 
-const skillCategories = [
+interface SkillCategory {
+  title: string;
+  blurb: string;
+  usedIn?: string;
+  skills: string[];
+}
+
+// First line is set large; the rest follows in a lighter weight.
+const primaryLanguages = ['Python', 'TypeScript', 'Java', 'C/C++'];
+const otherLanguages = [
+  'JavaScript',
+  'SQL',
+  'C#',
+  'MATLAB',
+  'HTML/CSS',
+];
+
+const categories: SkillCategory[] = [
   {
-    title: 'Languages',
-    skills: [
-      { name: 'Python', icon: 'fab fa-python' },
-      { name: 'Java', icon: 'fab fa-java' },
-      { name: 'TypeScript', icon: 'fas fa-code' },
-      { name: 'JavaScript', icon: 'fab fa-js' },
-      { name: 'C/C++', icon: 'fas fa-c' },
-      { name: 'C#', icon: 'fas fa-hashtag' },
-      { name: 'SQL', icon: 'fas fa-database' },
-      { name: 'MATLAB', icon: 'fas fa-square-root-variable' },
-      { name: 'HTML/CSS', icon: 'fab fa-html5' },
-    ],
+    title: 'Frontend',
+    blurb: 'Data-heavy web apps and dashboards.',
+    usedIn: 'Walmart dashboard, PogoDB, MSM Lookup, News2Lang',
+    skills: ['React', 'Next.js', 'Redux', 'Tailwind CSS'],
   },
   {
-    title: 'Frameworks & Frontend',
-    skills: [
-      { name: 'React.js', icon: 'fa-brands fa-react' },
-      { name: 'Next.js', icon: 'fas fa-n' },
-      { name: 'Tailwind CSS', icon: 'fas fa-paintbrush' },
-      { name: 'Redux', icon: 'fas fa-arrows-spin' },
-      { name: 'Node.js', icon: 'fab fa-node-js' },
-      { name: 'Spring Boot', icon: 'fas fa-leaf' },
-      { name: 'Android Studio', icon: 'fab fa-android' },
-    ],
+    title: 'Backend & Mobile',
+    blurb: 'Services, APIs, and an Android app.',
+    usedIn: 'Walmart microservices, PogoDB API, WanderSync',
+    skills: ['Spring Boot', 'Node.js', 'REST APIs', 'Android Studio'],
   },
   {
     title: 'Machine Learning',
-    skills: [
-      { name: 'PyTorch', icon: 'fas fa-fire-flame-curved' },
-      { name: 'TensorFlow', icon: 'fas fa-brain' },
-      { name: 'Keras', icon: 'fas fa-network-wired' },
-      { name: 'scikit-learn', icon: 'fas fa-cogs' },
-      { name: 'XGBoost', icon: 'fas fa-bolt' },
-      { name: 'Pandas', icon: 'fas fa-table' },
-      { name: 'NumPy', icon: 'fas fa-calculator' },
-      { name: 'Matplotlib', icon: 'fas fa-chart-bar' },
-      { name: 'Seaborn', icon: 'fas fa-chart-area' },
-    ],
+    blurb: 'Computer vision, forecasting, and regression models.',
+    usedIn: 'Aquabots, FishCast, Movie Revenue Prediction',
+    skills: ['PyTorch', 'TensorFlow', 'Keras', 'scikit-learn', 'XGBoost'],
+  },
+  {
+    title: 'Data Analysis',
+    blurb: 'Cleaning, exploring, and visualizing datasets.',
+    usedIn: 'Movie Revenue Prediction',
+    skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
   },
   {
     title: 'Generative AI',
-    skills: [
-      { name: 'LLM APIs', icon: 'fas fa-robot' },
-      { name: 'Agentic Workflows', icon: 'fas fa-diagram-project' },
-      { name: 'Prompt Engineering', icon: 'fas fa-terminal' },
-    ],
+    blurb: 'LLM-powered features and agentic tooling.',
+    usedIn: 'MathWorks test generation, News2Lang',
+    skills: ['LLM APIs', 'Agentic Workflows', 'Prompt Engineering'],
   },
   {
     title: 'Databases & Cloud',
-    skills: [
-      { name: 'PostgreSQL', icon: 'fas fa-database' },
-      { name: 'AWS', icon: 'fab fa-aws' },
-      { name: 'Firebase', icon: 'fas fa-fire' },
-      { name: 'Azure CosmosDB', icon: 'fab fa-microsoft' },
-      { name: 'Supabase', icon: 'fas fa-server' },
-    ],
+    blurb: 'Relational, document, and hosted backends.',
+    usedIn: 'PogoDB, News2Lang, WanderSync',
+    skills: ['PostgreSQL', 'Supabase', 'Firebase', 'Azure Cosmos DB', 'AWS'],
   },
   {
-    title: 'DevOps & Tools',
-    skills: [
-      { name: 'Git', icon: 'fab fa-git-alt' },
-      { name: 'Docker', icon: 'fab fa-docker' },
-      { name: 'Kubernetes', icon: 'fas fa-dharmachakra' },
-      { name: 'Maven', icon: 'fas fa-cubes' },
-      { name: 'Jenkins CI/CD', icon: 'fas fa-infinity' },
-      { name: 'GitHub Actions', icon: 'fab fa-github' },
-      { name: 'Prometheus', icon: 'fas fa-gauge-high' },
-      { name: 'SonarQube', icon: 'fas fa-magnifying-glass-chart' },
-      { name: 'Jest / Vitest', icon: 'fas fa-vial' },
-      { name: 'Apache Airflow', icon: 'fas fa-wind' },
-      { name: 'CMake', icon: 'fas fa-hammer' },
-      { name: 'LaTeX', icon: 'fas fa-file-alt' },
-      { name: 'Agile/Scrum', icon: 'fas fa-recycle' },
-    ],
+    title: 'DevOps & CI/CD',
+    blurb: 'Containers, pipelines, and automated deploys.',
+    usedIn: 'Walmart, MathWorks, PogoDB, MSM Lookup',
+    skills: ['Docker', 'Kubernetes', 'GitHub Actions', 'Jenkins', 'Apache Airflow', 'Maven', 'CMake'],
+  },
+  {
+    title: 'Quality & Workflow',
+    blurb: 'Testing, monitoring, and team practices.',
+    usedIn: 'MathWorks C++ testing, PogoDB, this site',
+    skills: ['Jest / Vitest', 'SonarQube', 'Prometheus', 'Git', 'Agile/Scrum', 'LaTeX'],
   },
 ];
+
+function SkillList({ skills, className }: { skills: string[]; className?: string }) {
+  return (
+    <ul className={`${styles.skillList} ${className ?? ''}`}>
+      {skills.map((skill) => (
+        <li key={skill}>{skill}</li>
+      ))}
+    </ul>
+  );
+}
 
 export default function SkillsPage() {
   return (
@@ -97,21 +95,31 @@ export default function SkillsPage() {
           </p>
         </section>
 
-        {skillCategories.map((category, index) => (
-          <FadeInOnScroll key={category.title} delay={index * 100}>
-            <section className={styles.category}>
-              <h2 className={styles.categoryTitle}>{category.title}</h2>
-              <div className={styles.skillsGrid}>
-                {category.skills.map((skill) => (
-                  <span key={skill.name} className={styles.skill}>
-                    <i className={`${skill.icon} ${styles.skillIcon}`}></i>
-                    {skill.name}
-                  </span>
-                ))}
-              </div>
-            </section>
-          </FadeInOnScroll>
-        ))}
+        <section className={styles.languages} aria-labelledby="languages-title">
+          <h2 id="languages-title" className={styles.kicker}>Languages</h2>
+          <SkillList skills={primaryLanguages} className={styles.languagesPrimary} />
+          <SkillList skills={otherLanguages} className={styles.languagesOther} />
+        </section>
+
+        <ol className={styles.rows}>
+          {categories.map((category, index) => (
+            <li key={category.title}>
+              <section className={styles.row} aria-labelledby={`skills-${index}`}>
+                <div className={styles.heading}>
+                  <h2 id={`skills-${index}`} className={styles.rowTitle}>{category.title}</h2>
+                  <p className={styles.blurb}>{category.blurb}</p>
+                </div>
+                <SkillList skills={category.skills} className={styles.rowSkills} />
+                {category.usedIn && (
+                  <p className={styles.usedIn}>
+                    <span className={styles.usedInLabel}>Used in</span>
+                    {category.usedIn}
+                  </p>
+                )}
+              </section>
+            </li>
+          ))}
+        </ol>
       </div>
 
       <Footer />

@@ -12,9 +12,8 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://dbruce32.github.io/Personal-Portfolio'),
   title: 'DYLAN BRUCE',
   description: 'Georgia Tech Computer Science student specializing in Intelligence and Information Internetworks.',
-  icons: {
-    icon: '/images/db-logo.png',
-  },
+  // Favicon and Apple touch icon come from src/app/icon.png and src/app/apple-icon.png
+  // (Next.js adds the <link> tags, with the basePath, automatically).
   openGraph: {
     title: 'DYLAN BRUCE',
     description: 'Georgia Tech Computer Science student specializing in Intelligence and Information Internetworks.',

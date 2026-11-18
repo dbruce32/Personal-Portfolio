@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import ContactPage from '@/app/contact/page';
 
 jest.mock('next/navigation', () => ({
@@ -25,7 +25,26 @@ describe('Contact Page', () => {
   it('renders quick links', () => {
     render(<ContactPage />);
     expect(screen.getByText('dylanbruce.cs@gmail.com')).toBeInTheDocument();
-    expect(screen.getByText('github.com/dbruce32')).toBeInTheDocument();
-    expect(screen.getByText('linkedin.com/in/dylangbruce')).toBeInTheDocument();
+    expect(screen.getByText('dbruce32')).toBeInTheDocument();
+    expect(screen.getByText('dylangbruce')).toBeInTheDocument();
+  });
+
+  it('links each contact channel', () => {
+    render(<ContactPage />);
+    const channels = screen.getByRole('region', { name: 'Contact channels' });
+    const hrefs = within(channels).getAllByRole('link').map((l) => l.getAttribute('href'));
+    expect(hrefs).toEqual([
+      'mailto:dylanbruce.cs@gmail.com',
+      'https://www.linkedin.com/in/dylangbruce',
+      'https://github.com/dbruce32',
+    ]);
+  });
+
+  it('answers terminal commands', () => {
+    render(<ContactPage />);
+    const input = screen.getByLabelText('Terminal input');
+    fireEvent.change(input, { target: { value: 'help' } });
+    fireEvent.submit(input.closest('form')!);
+    expect(screen.getByText(/Available commands/)).toBeInTheDocument();
   });
 });

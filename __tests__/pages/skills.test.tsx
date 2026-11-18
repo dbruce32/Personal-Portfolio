@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import SkillsPage from '@/app/skills/page';
 
 jest.mock('next/navigation', () => ({
@@ -12,29 +12,40 @@ describe('Skills Page', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Skills' })).toBeInTheDocument();
   });
 
+  it('renders languages as their own section', () => {
+    render(<SkillsPage />);
+    const languages = screen.getByRole('region', { name: 'Languages' });
+    expect(within(languages).getByText('Python')).toBeInTheDocument();
+    expect(within(languages).getByText('Java')).toBeInTheDocument();
+  });
+
   it('renders skill categories', () => {
     render(<SkillsPage />);
-    expect(screen.getByText('Languages')).toBeInTheDocument();
-    expect(screen.getByText('Frameworks & Frontend')).toBeInTheDocument();
-    expect(screen.getByText('DevOps & Tools')).toBeInTheDocument();
-    expect(screen.getByText('Databases & Cloud')).toBeInTheDocument();
-    expect(screen.getByText('Machine Learning')).toBeInTheDocument();
-    expect(screen.getByText('Generative AI')).toBeInTheDocument();
+    [
+      'Frontend',
+      'Backend & Mobile',
+      'Machine Learning',
+      'Data Analysis',
+      'Generative AI',
+      'Databases & Cloud',
+      'DevOps & CI/CD',
+      'Quality & Workflow',
+    ].forEach((name) => {
+      expect(screen.getByRole('heading', { level: 2, name })).toBeInTheDocument();
+    });
   });
 
-  it('renders skills added from the resume', () => {
+  it('places skills in the right categories', () => {
     render(<SkillsPage />);
-    expect(screen.getByText('PyTorch')).toBeInTheDocument();
-    expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
-    expect(screen.getByText('GitHub Actions')).toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Frontend' })).getByText('React')).toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Machine Learning' })).getByText('PyTorch')).toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Databases & Cloud' })).getByText('PostgreSQL')).toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'DevOps & CI/CD' })).getByText('Docker')).toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Quality & Workflow' })).getByText('Git')).toBeInTheDocument();
   });
 
-  it('renders individual skills', () => {
+  it('shows where each group of skills was used', () => {
     render(<SkillsPage />);
-    expect(screen.getByText('Python')).toBeInTheDocument();
-    expect(screen.getByText('Java')).toBeInTheDocument();
-    expect(screen.getByText('React.js')).toBeInTheDocument();
-    expect(screen.getByText('Docker')).toBeInTheDocument();
-    expect(screen.getByText('Git')).toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Generative AI' })).getByText(/MathWorks/)).toBeInTheDocument();
   });
 });

@@ -18,8 +18,8 @@ export default function Navbar() {
   return (
     <header className={styles.navbar}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo}>
-          DB
+        <Link href="/" className={styles.logo} aria-label="Dylan Bruce, home">
+          DB<span className={styles.logoDot} aria-hidden="true"></span>
         </Link>
         <nav className={styles.links} aria-label="Main navigation">
           {navLinks.map((link) => (
@@ -27,6 +27,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`${styles.link} ${pathname === link.href ? styles.active : ''}`}
+              aria-current={pathname === link.href ? 'page' : undefined}
             >
               {link.label}
             </Link>
